@@ -1,0 +1,203 @@
+<?php
+
+/**
+ * @file
+ * The Message Effects module adds attention getting JavaScript effects to Drupal messages.
+ * It depends on the Colorpicker module and the JQuery UI module which in turn relies on the JQuery Update module.
+ *
+ * Administrators may choose between various effects for status, warning, and error messages. The current list is:
+ *
+ * - Pulsate - flash in and out
+ * - Highlight - add a highlight background color to element and fade it away
+ * - Shake - shake the element horizontally a number of times
+ * - Bounce - bounce the element vertically into place
+ * - Fade In - fade in the element at the specified speed
+ * - Growl - raises unobtrusive messages within the browser, similar to OS X's Growl Framework
+ * - None - do nothing
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function messagefx_menu() {
+  $items = array();
+  $items['admin/config/messagefx'] = array(
+    'title' => 'Message Effects',
+    'description' => 'Change the effects applied to Drupal messages.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('messagefx_settings'),
+    'access arguments' => array('administer site configuration'),
+  );
+  $items['admin/config/messagefx/test'] = array(
+    'title' => 'Message Effects - Test',
+    'description' => 'Displays a status message, warning, and error to see how your settings will display.',
+    'page callback' => 'messagefx_test_page',
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+
+/**
+ * Define the types of messages.
+ */
+define('MESSAGETYPES', serialize(array('status', 'warning', 'error')));
+
+/**
+ * Implementation of hook_help().
+ */
+function messagefx_help() {
+  static $a = 0;
+  if (drupal_get_messages(NULL, FALSE) && $a == 0) {
+    $js = '';
+    $message_types = unserialize(MESSAGETYPES);
+
+    foreach ($message_types as $message_type) {
+      switch (variable_get($message_type .'_effect', 'Pulsate')) {
+        case 'Pulsate' :
+          drupal_add_library('system', 'effects.pulsate');
+          $js .= "\$('div[class=\"messages ". $message_type ."\"]').effect('pulsate', {times:". variable_get($message_type .'_times', 5) ."}, ". variable_get($message_type .'_length', 200) .");";
+          break;
+        case 'Shake' :
+          drupal_add_library('system', 'effects.shake');
+          $js .= "\$('div[class=\"messages ". $message_type ."\"]').effect('shake', {times:". variable_get($message_type .'_times', 5) ."}, ". variable_get($message_type .'_length', 200) .");";
+          break;
+        case 'Bounce' :
+          drupal_add_library('system', 'effects.bounce');
+          $js .= "\$('div[class=\"messages ". $message_type ."\"]').effect('bounce', {times:". variable_get($message_type .'_times', 5) ."}, ". variable_get($message_type .'_length', 400) .");";
+          break;
+        case 'FadeIn' :
+          $js .= "\$('div[class=\"messages ". $message_type ."\"]').hide().fadeIn(". variable_get($message_type .'_length', 400) .");";
+          break;
+        case 'Highlight' :
+          drupal_add_library('system', 'effects.highlight');
+          $js .= "\$('div[class=\"messages ". $message_type ."\"]').effect('highlight', {color:'". variable_get($message_type .'_colorpicker_textfield', '#FF3') ."'}, ". variable_get($message_type .'_length', 500) .");";
+          break;
+        case 'Growl' :
+          drupal_add_js(drupal_get_path('module', 'messagefx') .'/jquery.jgrowl.js', array('preprocess' => FALSE));
+          drupal_add_css(drupal_get_path('module', 'messagefx') .'/jquery.jgrowl.css', array('media' => 'screen'));
+          drupal_add_css(drupal_get_path('module', 'messagefx') .'/messagefx.css', array('media' => 'screen'));
+          $js .= "if(\$('div[class=\"messages ". $message_type ."\"]').html() != null){\$.jGrowl.defaults.position = '". variable_get($message_type .'_growl_position', 'top-right') ."'; \$.jGrowl(\$('div[class=\"messages ". $message_type ."\"]').html(), {header: '". variable_get($message_type .'_growl_header', $message_type .' Message') ."', theme: 'jGrowl-". $message_type ."', sticky: ". variable_get($message_type .'_growl_sticky', TRUE) .", life: ". variable_get($message_type .'_length', 3000) ."});\$('div.jGrowl div.jGrowl-". $message_type ."').css({background: '". variable_get($message_type .'_colorpicker_textfield', '#000') ."'}).fadeTo(0, 0.85);}";
+          break;
+      }
+    }
+
+    if ($js) {
+      $js = '(function($){$(function(){'. $js .'})})(jQuery);';
+      drupal_add_js($js, array('type' => 'inline', 'preprocess' => FALSE));
+    }
+  }
+  $a++;
+}
+
+/**
+ * Settings form
+ */
+function messagefx_settings() {
+
+  $form['test_url'] = array('#value' => '<p>'. t("Click !here to test your settings and see the three types of messages.", array('!here' => l('HERE', 'admin/settings/messagefx/test'))));
+  $message_types = unserialize(MESSAGETYPES);
+
+  foreach ($message_types as $message_type) {
+    $form[$message_type .'_fx'] = array('#type' => 'fieldset', '#title' => t(ucfirst($message_type) .' Effects'), '#collapsible' => TRUE, '#collapsed' => FALSE, );
+    $fx_options = variable_get('spajax_fx_options', array('' => 'none', 'Pulsate' => 'Pulsate', 'Shake' => 'Shake', 'Bounce' => 'Bounce', 'FadeIn' => 'Fade In', 'Highlight' => 'Highlight', 'Growl' => 'Growl'));
+    $growl_position_options = variable_get('position_options', array('top-left' => 'Top Left', 'top-right' => 'Top Right', 'bottom-left' => 'Bottom Left', 'bottom-right' => 'Bottom Right', 'center' => 'Center'));
+    $form[$message_type .'_fx'][$message_type .'_effect'] = array(
+      '#type' => 'select',
+      '#title' => t(ucfirst($message_type) .' Message Effect'),
+      '#default_value' => variable_get($message_type .'_effect', 'Pulsate'),
+      '#options' => $fx_options,
+      '#description' => t('Effect added to Drupal '. $message_type .' messages'),
+    );
+    $form[$message_type .'_fx'][$message_type .'_adv'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Timing'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    $form[$message_type .'_fx'][$message_type .'_adv'][$message_type .'_length'] = array(
+      '#type' => 'textfield',
+      //'#size' => 5,
+      '#title' => t('Length of each'),
+      '#default_value' => variable_get($message_type .'_length', 500),
+      '#description' => t('In milliseconds -- Length of each iteration of the effect.'),
+    );
+    $form[$message_type .'_fx'][$message_type .'_adv'][$message_type .'_times'] = array(
+      '#type' => 'textfield',
+      //'#size' => 5,
+      '#title' => t('Number of times'),
+      '#default_value' => variable_get($message_type .'_times', 5),
+      '#description' => t('Number of times to apply the effect.'),
+    );
+    $form[$message_type .'_fx'][$message_type .'_color'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Color'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    $form[$message_type .'_fx'][$message_type .'_color'][$message_type .'_colorpicker'] = array(
+      '#type' => 'colorpicker',
+      '#title' => t(ucfirst($message_type) .' highlight color picker'),
+      '#description' => t('Click in this textfield to start picking your color'),
+    );
+    $form[$message_type .'_fx'][$message_type .'_color'][$message_type .'_colorpicker_textfield'] = array(
+      '#type' => 'colorpicker_textfield',
+      '#title' => t(ucfirst($message_type) .' highlight color hex code'),
+      '#default_value' => variable_get($message_type .'_colorpicker_textfield', '#FF3'),
+      '#colorpicker' => $message_type .'_colorpicker',
+    );
+    $form[$message_type .'_fx'][$message_type .'_growl'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Growl Options'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    $form[$message_type .'_fx'][$message_type .'_growl'][$message_type .'_growl_position'] = array(
+      '#type' => 'select',
+      '#title' => t('Position'),
+      '#default_value' => variable_get($message_type .'_growl_position', 'top-right'),
+      '#options' => $growl_position_options,
+      '#description' => t('Position of the '. $message_type .' messages'),
+    );
+    $form[$message_type .'_fx'][$message_type .'_growl'][$message_type .'_growl_header'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Header Text'),
+      '#maxlength' => 80,
+      '#default_value' => variable_get($message_type .'_growl_header', ucfirst($message_type) .' Message'),
+      '#description' => t('Header text for '. $message_type .' messages'),
+    );
+    $form[$message_type .'_fx'][$message_type .'_growl'][$message_type .'_growl_sticky'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Sticky'),
+      '#default_value' => variable_get($message_type .'_growl_sticky', TRUE),
+      '#description' => t('Sticky messages remain on screen until closed'),
+    );
+  }
+
+  return system_settings_form($form);
+}
+
+/**
+ * Validation function for settings form
+ */
+function messagefx_settings_validate($form, &$form_state) {
+
+  $message_types = unserialize(MESSAGETYPES);
+  foreach ($message_types as $message_type) {
+    $message_fields[] = $message_type .'_length';
+    $message_fields[] = $message_type .'_times';
+  }
+
+  foreach ($message_fields as $field) {
+    if (!is_numeric($form_state['values'][$field])) {
+      form_set_error($field, t('Timing values need to be numbers.'));
+    }
+  }
+}
+
+function messagefx_test_page() {
+  drupal_set_message("This is a Status Message.");
+  drupal_set_message("This is a Warning Message", 'warning');
+  drupal_set_message("This is an Error Message", 'error');
+
+  return t('Refresh this page to test the effects again.');
+}

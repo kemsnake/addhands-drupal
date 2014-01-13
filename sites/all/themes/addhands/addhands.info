@@ -1,0 +1,31 @@
+name = AddHands
+description = EventCust Theme
+core = 7.x
+engine = phptemplate
+screenshot = screenshot.png
+
+; REQUIRED CORE REGIONS
+
+regions[header] = Header
+regions[help] = Help
+regions[branding] = Branding
+regions[menu] = Menu
+
+regions[content] = Content
+regions[sidebar_first] = Sidebar First
+regions[sidebar_second] = Sidebar Second
+
+regions[footer] = Footer
+
+stylesheets[all][] = css/layout.css
+stylesheets[all][] = css/mystyle.css
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/colors.css
+stylesheets[all][] = css/custom.css
+stylesheets[all][] = css/footer.css
+stylesheets[print][] = css/print.css
+stylesheets[all][] = css/nicki_ec_custom_style.css
+
+scripts[] = scripts/box-shadow.min.js
+
+settings[ilogo] = 'sites/all/themes/addhands/ilogo.png'

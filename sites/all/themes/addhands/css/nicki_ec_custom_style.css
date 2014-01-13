@@ -1,0 +1,556 @@
+#block-ec-custom-confirmed-info, .personal_info{
+    background-color: white;
+    font-family: "Georgia";
+    color:#808080;
+    font-size: 12pt;
+}
+#block-ec-custom-confirmed-info h3{
+    color: #000000;
+    font-family: "Georgia";
+
+}
+#block-ec-custom-confirmed-info ul{
+    list-style-image: url("../images/true.png");
+}
+#block-ec-custom-confirmed-info{
+    border: 0 !important;
+    background-color: white !important;
+}
+/*
+* Personal info block
+*/
+.personal_info{
+    margin-bottom: 20px;
+}
+.personal_info_profile_pic a, .username a{
+    float: left;
+    font-size: 16px;
+    font-style: italic;
+    text-decoration: none;
+    font-weight: bold;
+    color:#3c8ced;
+    text-align: center;
+    width: 100%;
+    text-transform: capitalize;
+}
+.personal_info_profile_pic img{
+    border: 4px solid;
+    border-color: #e6edf5;
+    border-radius: 3px 3px 3px 3px;
+    padding: 15px;
+
+}
+.personal_info_profile_pic{
+    float: left;
+    margin: 10px;
+    margin-right: 15px;
+
+}
+.personal_info_about{
+
+    font: left;
+}
+
+/*
+* Advert review block
+*/
+#reviews-block{
+    background-color: #f0f3f8;
+    border-radius: 3px 3px 3px 3px;
+    padding: 3px;
+    margin-bottom: 8px;
+    clear: both;
+}
+
+.tabs-div{
+    clear: both;
+}
+
+/*
+*  Another user\s adverts block
+*/
+.block-advert-title{
+    margin-bottom: 4px;
+}
+.block-advert-title a{
+    color: #3C8CED;
+}
+.block-advert-price{
+    color: #FB7A38;
+    font-size: 12pt;
+    margin-bottom: 4px;
+}
+
+
+
+/*
+*  Answer form (user_dialogs)
+*/
+.answer-form-textarea{
+    float: left;
+
+}
+.answer-form-textarea form{
+    width: auto;
+}
+.user-dialog-avatar-collocutor, .user-dialog-avatar-owner{
+    float: left;
+    margin: 10px;
+}
+.user-dialog-avatar-owner{
+
+}
+
+.user-dialog-body{
+
+}
+
+/*
+*  Messages
+*/
+.answer-form{
+    padding-left: 20% !important;
+}
+.message-container{
+    border: 0px !important;
+
+}
+#message-container-thread-page{
+    max-height: 500px !important;
+     width: 960px !important;
+    overflow: auto;
+}
+.system-message{
+    background-color: #eae9e5 !important;
+}
+.unread  {
+    background-color: #e5eef7 !important;
+}
+.user-dialog-row, .user-dialog-clicked{
+    background-color: #ffffff;
+    clear:both;
+    border: 0px;
+    width: 920px !important;
+}
+.user-dialog-clicked .user-dialog-message{
+    max-width: 640px !important;
+}
+.user-dialog-title{
+    color:#3c8ced;
+    font-weight: bold;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 9pt;
+    float: left;
+    width: 130px;
+}
+.user-dialog-title a:hover{
+    text-decoration: none;
+}
+.user-dialog-message{
+    float: left;
+    width: auto !important;
+    max-width: 810px !important;
+}
+.user-dialog-timestamp{
+    position:absolute;
+    right: 30px;
+    color: #959595;
+}
+.user-dialog-row, .user-dialog-clicked{
+    border-radius: 3px 3px 3px 3px;
+    padding: 7px;
+    margin: 7px;
+}
+.user-dialog-avatar{
+    width: 75px;
+}
+.user-dialog-clicked .user-dialog-body{
+    max-width: 450px;
+}
+.user-dialog-clicked .user-dialog-message{
+    padding-top: 20px;
+}
+
+/*
+* Home page header menu
+*/
+.language-icon{
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: -13px !important;
+}
+.dialogs-link-img{
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: -13px;
+}
+.header-dropdown{
+    position: absolute !important;
+    right: 0px !important;
+    width: auto !important;
+}
+.item-list ul{
+    white-space: nowrap;
+}
+/* slider's arrows */
+#views_slideshow_controls_text_previous_frontpage_slideshow-block,
+#views_slideshow_controls_text_next_frontpage_slideshow-block{
+    position: relative;
+    left: 0px;
+    float: left;
+    //top: 335px;
+}
+#views_slideshow_controls_text_next_frontpage_slideshow-block{
+    float: right;
+}
+/*
+* Slider white line under header menu
+*/
+.views-slideshow-controls-top.clearfix:after {
+    content: none !important;
+}
+/*
+* Advert slider
+*/
+
+span.arrow.back{
+    background: url("../images/categories/sprite.png") no-repeat scroll !important;
+    background-position:  -25px 0  !important;
+    display: block  !important;
+    height: 65px  !important;
+    position: absolute  !important;
+    width: 17px  !important;
+    cursor: pointer  !important;
+    bottom: 13px !important;
+    left: -26px !important;
+
+}
+a.arrow{
+    width: 0px !important;
+    height: 0px !important;
+}
+/*.galleryformatter-greenarrows .gallery-thumbs {
+    padding: 0px 0px !important;
+}*/
+span.arrow.forward{
+    background: url("../images/categories/sprite.png") no-repeat scroll -45px 0px !important;
+    display: block !important;
+    height: 65px !important;
+    position: absolute !important;
+    width: 17px !important;
+    cursor: pointer !important;
+    bottom: 13px !important;
+
+}
+
+.gallery-thumbs{
+    width: 646px !important;
+    padding: 0 0 !important;
+}
+.gallery-slides{
+    width: 621px !important;
+    background-color: #e5e4e2 !important;
+}
+.galleryformatter-greenarrows .gallery-thumbs a.arrow, .galleryformatter-greenarrows .gallery-thumbs .wrapper, .galleryformatter-greenarrows .gallery-thumbs li.active a, .galleryformatter-greenarrows .gallery-thumbs li a:hover, .galleryformatter-greenarrows .view-full
+{
+    background: none !important;
+}
+.gallery-thumbs .wrapper{
+
+    width:624px !important;
+
+}
+.slide-button{
+    display: none !important;
+}
+.galleryformatter .gallery-slides, .galleryformatter .gallery-thumbs{
+    margin: auto 0 !important;
+}
+
+/*
+* Advert page
+*/
+#block-ec-advert-advert-author {
+    padding: 0px 0px !important;
+}
+#block-ec-advert-advert-author img{
+    border: 4px solid !important;
+    border-color: #e6edf5 !important;
+    border-radius: 3px 3px 3px 3px !important;
+    padding: 15px !important;
+}
+.personal_info_profile_pic a.username,
+#block-ec-advert-advert-author a.username{
+    float: left;
+    font-size: 16px;
+    font-style: italic;
+    text-decoration: none;
+    font-weight: bold;
+    color:#3c8ced;
+    text-align: center;
+    width: 100%;
+    text-transform: capitalize;
+}
+.blue-button{
+    color: white;
+    display: block;
+    font-size: 13px;
+    text-align: center;
+    margin: 4px 0 0px;
+    padding: 12px 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    background: url(../images/mess.png) no-repeat 0 2px;
+}
+a.blue-button{
+    color: white;
+    text-decoration: none;
+}
+.blue-button:hover{
+    background-position: 0 -39px;
+}
+.author-advert-orange{
+    color: #fb7a38;
+}
+#block-ec-user-confirmed-info .content, .node-confirmed-info{
+    color: gray;
+    font-size: 13px;
+    position: relative;
+}
+#block-ec-user-confirmed-info .content{
+    background: none repeat scroll 0 0 #E5EDF7;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+#block-ec-user-confirmed-info ul{
+    list-style: none;
+    padding-left: 25px !important;
+}
+.pane-ec-user-confirmed-info ul li i.true,
+#block-ec-user-confirmed-info ul li i.true{
+    background: url("../images/categories/sprite.png") no-repeat scroll 0 -135px transparent;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 4px;
+}
+.pane-ec-user-confirmed-info ul li i.false,
+#block-ec-user-confirmed-info ul li i.false{
+    background: url("../images/false.png") no-repeat scroll transparent;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 4px;
+}
+#block-ec-user-confirmed-info,#block-users-deal-author-another-adverts, #block-users-deal-related-adverts{
+    padding: 0px 0px !important;
+}
+#block-ec-advert-author-another-adverts h2, #block-ec-advert-related-adverts h2{
+    font-size: 20px;
+    border-bottom: 0px !important;
+}
+#block-ec-advert-author-another-adverts, #block-ec-advert-related-adverts{
+    padding-left: 0px !important;
+}
+.create-deal-date-start input, .create-deal-date-end input{
+    font-size: 9pt !important;
+}
+
+.block-advert-foto{
+    height: 124px !important;
+    width: 181px !important;
+    text-align: center !important;
+    visibility: visible !important;
+    border: 1px solid #E5E4E2 !important;
+    padding: 7px !important;
+    border-radius: 1px 1px 1px 1px !important;
+    -moz-box-shadow: 2px 2px 8px -2px rgba(0, 0, 0, 0.5) !important;
+    -webkit-box-shadow: 2px 2px 8px -2px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 2px 2px 8px -2px rgba(0, 0, 0, 0.5) !important;
+    margin-bottom: 4px !important;
+}
+.block-advert-foto a{
+    display: block !important;
+    width: 181px !important;
+    height: 124px !important;
+    background-color: rgba(0, 0, 0, 0.105) !important;
+}
+/*.block-advert-foto img{
+    height: 124px !important;
+    width: 181px !important;
+}*/
+.advert-price{
+    color: #383B3F;
+    font-size: 20px;
+    margin: 7px 0 12px;
+}
+#block-users-deal-conclude-contract #edit-submit{
+    border: 0px !important;
+    height: 34px !important;
+}
+#block-users-deal-conclude-contract #edit-submit:hover{
+    background-image: url("../images/order.png") !important;
+    background-position: 0px -35px !important;
+}
+.wrapper-order-button img{
+    position: relative;
+    top: 30px;
+    left: 73px;
+}
+
+.deal-price-wrapper{
+    float: left;
+    width: 100%;
+}
+
+#block-users-deal-conclude-contract .error-msg{
+    color: red;
+    float: left;
+    width:100%;
+}
+
+#block-users-deal-conclude-contract #deal-part{
+    background: none repeat scroll 0 0 #E5EDF7;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    float:left;
+    padding-left: 15px;
+}
+
+select#edit-price-types{
+    width:100%;
+}
+
+#block-users-deal-conclude-contract .form-item-price-types{
+    float: left;
+    width:100%;
+    margin-bottom: 5px;
+}
+/*
+* Search result page
+*/
+.search-item-author-avatar{
+    width: 60px;
+    height: 60px !important;
+    text-align: center;
+    background-color: #e5e4e2;
+}
+.search-item-bottom-links{
+    clear:left !important;
+}
+
+/*
+*  Help menu
+*/
+.block-jquerymenu a{
+    text-decoration: none !important;
+}
+.block-jquerymenu span.parent, span.closed{
+    background-color: transparent !important;
+    background-image: none !important;
+}
+.block-jquerymenu ul li.parent{
+    list-style-image: url('/misc/menu-collapsed.png') !important;
+}
+
+/*
+*  Head menu
+*/
+.region-header .block{
+    margin-left: 3px !important;
+}
+
+.hello-msg{
+    max-width:130px !important;
+}
+/*
+* FB friends
+*/
+#fb-invates-form .form-type-checkbox{
+    width: 100px;
+    height: 100px;
+    //border-radius: 3px 3px 3px 3px !important;
+    background-position: center !important;
+    background: #e5e4e2 no-repeat;
+
+
+}
+.fb-friends-name{
+    font-family: "Georgia";
+    font-style: italic;
+    font-weight: bold;
+
+    font-size: 9pt;
+    text-align: center!important;
+}
+.fb-friends-checked{
+    background: #3b5999 !important;
+    color: white !important;
+    -moz-box-shadow: 1px 1px 10px -1px rgba(0, 0, 0, 0.5) !important;
+    -webkit-box-shadow: 1px 1px 10px -1px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 1px 1px 10px -1px rgba(0, 0, 0, 0.5) !important;
+}
+.fb-friends-wrapper{
+    color: #3B3B3B;
+    overflow-x: hidden;
+    float: left !important;
+    margin: 5px;
+    width: 100px;
+    height: 155px;
+    border-radius: 3px 3px 3px 3px !important;
+    background: #e5e4e2;
+    padding: 5px;
+
+}
+#fb-invates-form .form-item-frmessage{
+    clear: both !important;
+}
+
+#fb-invates-form .form-type-checkbox input{
+    margin:0;
+    padding:0;
+    opacity:0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+#hybridauth-facebook{
+    background: url('../images/fb-button-min.png') no-repeat;
+}
+.hybridauth-icon{
+    width: 192px;
+    height: 40px;
+}
+#hybridauth-vkontakte{
+    background: url('../images/vk-button.png') no-repeat;
+}
+#hybridauth-vkontakte:hover{
+    background-position: -192px;
+}
+#hybridauth-facebook:hover{
+    background-position: -191px;
+}
+div[aria-labelledby="ui-dialog-title-block-user-login"]{
+
+    background: black no-repeat !important;
+}
+.form-type-hybridauth-widget{
+    text-align: center !important;
+}
+label[for="edit-hybridauth"]{
+    text-align: center !important;
+}
+ul#hybridauth{
+    padding: 0 0 0.25em 0em !important;
+}
+div.form-item-name, div.form-item-pass, div.form-item-remember-me{
+    margin-left: 0px !important;
+}
+#block-user-login .form-item input, #block-user-login .form-item label{
+   margin-left: 25px !important;
+}

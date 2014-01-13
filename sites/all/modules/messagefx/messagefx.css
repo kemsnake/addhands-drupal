@@ -1,0 +1,7 @@
+div[class="messages status"], div[class="messages warning"], div[class="messages error"]{
+display:none;
+}
+
+.required{
+display:block;
+}

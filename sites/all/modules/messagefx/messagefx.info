@@ -1,0 +1,5 @@
+name = Message Effects
+description = Calls more attention to Drupal messages.
+package = User Interface
+core = 7.x
+files[] = messagefx.module

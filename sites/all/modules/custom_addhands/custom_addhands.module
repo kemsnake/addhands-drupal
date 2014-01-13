@@ -1,0 +1,57 @@
+<?php
+
+function custom_addhands_menu(){
+  $items = array();
+
+  $items['main'] = array(
+    'page callback' => 'custom_addhands_frontpage_callback',
+    'access callback' => true,
+    'title' => '',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+function custom_addhands_frontpage_callback(){
+  drupal_set_title('');
+  drupal_add_js(drupal_get_path('module', 'custom_addhands') . '/addhands.js');
+  return '';
+}
+
+/*
+ * Implimentation hook_block_info()
+ */
+function custom_addhands_block_info(){
+  $block['footer_logo']['info'] = t('Footer Logo');
+  $block['footer_contacts']['info'] = t('Footer Contacts');
+
+  return $block;
+}
+
+/*
+* Implimentation hook_block_view()
+*/
+
+function custom_addhands_block_view($delta){
+  $output='';
+
+  switch($delta){
+    case 'footer_logo':
+      $output = '<div class="f-logo-wrapper">' . theme('image', array('path' => theme_get_setting('ilogo'), 'attributes' => array('class'=>'f-logo'))) . '</div>';
+      $output .= '<div class="f-copy-wrapper">&copy;&nbsp' . date('Y') . '</div>';
+      break;
+    case'footer_contacts':
+      $output = '<div class "footer-about">Обратная связь</div>';
+      $output .= '<div class "footer-email">email: info@addhands.com</div>';
+      $output .= '<div class="soc">';
+      $output .= l('', url('http://www.facebook.com/addhands', array('absolute' => true)), array('attributes' => array('class' => 'f-book', 'target' => '_blank')));
+      $output .= l('', url('http://www.vk.com/addhands', array('absolute' => true)), array('attributes' => array('class' => 'vk', 'target' => '_blank')));
+      $output .= l('', url('http://www.twitter.com/addhands', array('absolute' => true)), array('attributes' => array('class' => 'tw', 'target' => '_blank')));
+      $output .= l('', url('http://www.facebook.com/addhands', array('absolute' => true)), array('attributes' => array('class' => 'rss', 'target' => '_blank')));
+      $output .= '</div>';
+      break;
+  }
+  $block['content'] = $output;
+  return $block;
+}

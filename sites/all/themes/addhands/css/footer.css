@@ -1,0 +1,60 @@
+#footer { position: relative; width: 1000px; height: 175px; margin: 0px auto; border-top: 1px solid #ccc; color: #4c4c4c; font-size: 12px; }
+
+img.f-logo{
+    width: 50px;
+    height: 50px;
+    clear: both;
+}
+
+#block-custom-addhands-footer-logo,
+#block-menu-menu-footer-first,
+#block-menu-menu-footer-second,
+#block-menu-menu-footer-third,
+#block-block-7 {
+    width:17%;
+    float:left;
+    margin-right: 1%;
+    clear:none!important;
+}
+
+#block-custom-addhands-footer-logo{
+    width: 15%;
+}
+
+#block-menu-menu-footer-second{
+    width: 22%;
+}
+#block-menu-menu-footer-first{
+    width: 25%;
+}
+
+#footer #block-block-7 .footer-about{
+  margin-bottom: 5px;
+}
+
+#footer #block-block-7 .footer-email{
+  margin-bottom: 25px;
+}
+
+#footer ul{
+    float:left!important;
+
+}
+#footer ul li{
+    list-style: none outside none;
+    margin: 0 0 10px;
+}
+
+#block-menu-menu-footer-first a,
+#block-menu-menu-footer-second a,
+#block-menu-menu-footer-third a{
+    color: #505050;
+    text-decoration: underline;
+    outline: none;
+}
+
+.soc a { float: left; width: 16px; height: 16px; margin: 0 16px 0 0; background: url("../images/soc.gif") no-repeat; }
+.soc .f-book { background-position: 0 0; }
+.soc .vk { background-position: -32px 0; }
+.soc .tw { background-position: -64px 0; }
+.soc .instagram { background-position: -96px 0; }
