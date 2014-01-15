@@ -41,16 +41,6 @@ function custom_addhands_block_view($delta){
       $output = '<div class="f-logo-wrapper">' . theme('image', array('path' => theme_get_setting('ilogo'), 'attributes' => array('class'=>'f-logo'))) . '</div>';
       $output .= '<div class="f-copy-wrapper">&copy;&nbsp' . date('Y') . '</div>';
       break;
-    case'footer_contacts':
-      $output = '<div class "footer-about">Обратная связь</div>';
-      $output .= '<div class "footer-email">email: info@addhands.com</div>';
-      $output .= '<div class="soc">';
-      $output .= l('', url('http://www.facebook.com/addhands', array('absolute' => true)), array('attributes' => array('class' => 'f-book', 'target' => '_blank')));
-      $output .= l('', url('http://www.vk.com/addhands', array('absolute' => true)), array('attributes' => array('class' => 'vk', 'target' => '_blank')));
-      $output .= l('', url('http://www.twitter.com/addhands', array('absolute' => true)), array('attributes' => array('class' => 'tw', 'target' => '_blank')));
-      $output .= l('', url('http://www.facebook.com/addhands', array('absolute' => true)), array('attributes' => array('class' => 'rss', 'target' => '_blank')));
-      $output .= '</div>';
-      break;
   }
   $block['content'] = $output;
   return $block;

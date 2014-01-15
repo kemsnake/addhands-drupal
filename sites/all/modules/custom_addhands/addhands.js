@@ -12,6 +12,9 @@
             $( window ).resize(function() {
                 resizeBl();
             });
+            $( window ).load(function() {
+                resizeBl();
+            });
 
             function resizeBl(){
                 var w = $('body').width();
