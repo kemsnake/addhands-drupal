@@ -415,3 +415,32 @@
 .div.jGrowl div.jGrowl-notification{
     width: 350px!important;
 }
+
+/* Banners */
+#branding .region-branding #block-custom-addhands-top-banner img{
+    display: block;
+    margin: auto;
+}
+
+.node-type-page h1#page-title{
+    display: none;
+}
+
+/* DHTML menu */
+li.dhtml-menu-open > a {
+    font-style: normal!important;
+}
+
+/* Fonts */
+body.not-front,
+body.not-front .leaf a {
+    font-family:  helvetica neue, helvetica, arial, sans-serif!important;
+}
+
+body.not-front .menu a {
+    font-size: 14px;
+}
+
+body.not-front #footer .leaf a {
+    font-family:  "Georgia", "tahoma"!important;
+}

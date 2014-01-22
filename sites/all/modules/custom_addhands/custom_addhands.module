@@ -1,5 +1,8 @@
 <?php
 
+/*
+* Implements hook_menu().
+*/
 function custom_addhands_menu(){
   $items = array();
 
@@ -13,6 +16,9 @@ function custom_addhands_menu(){
   return $items;
 }
 
+/*
+ * Callback for frontpage hack
+ */
 function custom_addhands_frontpage_callback(){
   drupal_set_title('');
   drupal_add_js(drupal_get_path('module', 'custom_addhands') . '/addhands.js');
@@ -20,28 +26,51 @@ function custom_addhands_frontpage_callback(){
 }
 
 /*
- * Implimentation hook_block_info()
+ * Implements hook_block_info().
  */
 function custom_addhands_block_info(){
   $block['footer_logo']['info'] = t('Footer Logo');
-  $block['footer_contacts']['info'] = t('Footer Contacts');
+  $block['top_banner']['info'] = t('Верхний баннер');
 
   return $block;
 }
 
 /*
-* Implimentation hook_block_view()
+* Implements hook_block_view().
 */
-
 function custom_addhands_block_view($delta){
-  $output='';
+  $output = '';
 
   switch($delta){
     case 'footer_logo':
       $output = '<div class="f-logo-wrapper">' . theme('image', array('path' => theme_get_setting('ilogo'), 'attributes' => array('class'=>'f-logo'))) . '</div>';
       $output .= '<div class="f-copy-wrapper">&copy;&nbsp' . date('Y') . '</div>';
       break;
+    case 'top_banner':
+      $nid = arg(1);
+      $node = node_load($nid);
+      if (isset($node->field_banner_image['und'][0]['uri'])){
+        $banner_uri = $node->field_banner_image['und'][0]['uri'];
+        $banner_img = theme('image_style', array(
+          'style_name' => 'top_banner',
+          'path' => $banner_uri,
+        ));
+        $output .= $banner_img;
+      }
+
+      break;
   }
   $block['content'] = $output;
   return $block;
+}
+
+/*
+* Implements hook_node_view().
+*/
+function custom_addhands_node_view($node){
+  // Убираем заголовок со всех страниц
+  if ($node->type == 'page'){
+    $node->title ='';
+    //drupal_set_title('');
+  }
 }

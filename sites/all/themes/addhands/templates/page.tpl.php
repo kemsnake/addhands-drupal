@@ -121,12 +121,6 @@
 
   <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix">
 
-    <?php if ($tabs): ?>
-      <div class="tabs">
-        <?php print render($tabs); ?>
-      </div>
-    <?php endif; ?>
-
     <?php if ($page['sidebar_first']): ?>
       <div id="sidebar-first" class="column sidebar"><div class="section">
         <?php print render($page['sidebar_first']); ?>
@@ -134,6 +128,13 @@
     <?php endif; ?>
 
     <div id="content" class="column"><div class="section">
+
+      <?php if ($tabs): ?>
+        <div class="tabs">
+          <?php print render($tabs); ?>
+        </div>
+      <?php endif; ?>
+
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
