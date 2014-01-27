@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature Advert Config feature.
+ */
+
+include_once 'feature_advert_config.features.inc';
