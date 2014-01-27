@@ -10,10 +10,10 @@
 function feature_user_management_taxonomy_default_vocabularies() {
   return array(
     'cities' => array(
-      'name' => 'Сities',
+      'name' => 'Города',
       'machine_name' => 'cities',
-      'description' => 'Города и регионы россии',
-      'hierarchy' => 1,
+      'description' => 'Города и регионы России (для регистрации пользователей)',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
     ),

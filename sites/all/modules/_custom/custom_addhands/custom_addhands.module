@@ -179,7 +179,6 @@ function theme_multicolumn_options($element) {
   $total_options = count($element['#options']);
   $options_per_column = ceil($total_options / $total_columns);
   $keys = array_keys($element['#options']);
-  $type = $element[$keys[0]]['#type'];
 
   // Start wrapper div.
   $output .= '<div class="multicolumn-options-wrapper clearfix">';

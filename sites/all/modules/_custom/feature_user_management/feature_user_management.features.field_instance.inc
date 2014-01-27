@@ -183,7 +183,7 @@ function feature_user_management_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => array(
       0 => array(
-        'tid' => 4,
+        'tid' => 2,
       ),
     ),
     'deleted' => 0,
