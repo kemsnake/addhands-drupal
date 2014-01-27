@@ -1263,25 +1263,6 @@ td.ui-state-disabled{
     color: #66B1FB !important;
 }
 
-.login-button{
-    cursor: pointer !important;
-    padding-top: 1px !important;
-}
-
-.login-button a{
-    color: #fff !important;
-    text-decoration: none !important;
-}
-
-.login-button a:hover{
-    color: #fff !important;
-}
-
-.login-button:hover {
-    color: #fff !important;
-    background: url("../images/enter.png") no-repeat scroll 0px -32px transparent !important;
-    text-decoration: none !important;
-}
 
 .ui-datepicker-calendar .ui-state-default{
     background-image: none !important; /*чтобы отменить background-image*/
@@ -1872,10 +1853,6 @@ div.user-dialog-body{
 div.user-dialog-message{
     width: 100% !important;
 
-}
-
-#edit-body{
-    height: 60px;
 }
 /* end user messages */
 

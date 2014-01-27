@@ -444,3 +444,26 @@ body.not-front .menu a {
 body.not-front #footer .leaf a {
     font-family:  "Georgia", "tahoma"!important;
 }
+
+a.login-button {
+    height: 30px;
+    line-height: 26px;
+    right: 0px;
+    width: 76px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 26px;
+    display: block;
+    color: #fff!important;
+    margin-top:-4px;
+    background: url("../images/enter.png") no-repeat 0 1px;
+    cursor: pointer !important;
+    padding-top: 1px !important;
+}
+
+a.login-button:hover {
+    background-position: 1px bottom;
+    color: #f1f8ff!important;
+    text-decoration: none;
+    padding-top: 3px;
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature user management feature.
+ */
+
+include_once 'feature_user_management.features.inc';

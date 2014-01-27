@@ -1,0 +1,212 @@
+<?php
+
+/*
+* Implements hook_menu().
+*/
+function custom_addhands_menu(){
+  $items = array();
+
+  $items['main'] = array(
+    'page callback' => 'custom_addhands_frontpage_callback',
+    'access callback' => true,
+    'title' => '',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/config/addhands'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('custom_addhands_settings'),
+    'access arguments' => array('administer site configuration'),
+    'title' => 'Addhands',
+  );
+
+  $items['admin/config/addhands/settings'] = array(
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'Настройки addhands',
+  );
+
+  return $items;
+}
+
+/*
+ * Callback for frontpage hack
+ */
+function custom_addhands_frontpage_callback(){
+  drupal_set_title('');
+  drupal_add_js(drupal_get_path('module', 'custom_addhands') . '/addhands.js');
+  return '';
+}
+
+/*
+ * Callback for frontpage hack
+ */
+function custom_addhands_settings($form, $form_state){
+  $default_value_footer = variable_get('user_register_footer_text', array('value' => '', 'format' => 'full_html'));
+  $form['user_register_footer_text'] = array(
+    '#type' => 'text_format',
+    '#title' => 'Футер формы регистрации пользователя',
+    '#default_value' => $default_value_footer['value'],
+    '#format' => $default_value_footer['format'],
+  );
+
+  return system_settings_form($form);
+}
+
+/*
+ * Implements hook_block_info().
+ */
+function custom_addhands_block_info(){
+  $block['footer_logo']['info'] = t('Footer Logo');
+  $block['top_banner']['info'] = t('Верхний баннер');
+
+  return $block;
+}
+
+/*
+* Implements hook_block_view().
+*/
+function custom_addhands_block_view($delta){
+  $output = '';
+
+  switch($delta){
+    case 'footer_logo':
+      $output = '<div class="f-logo-wrapper">' . theme('image', array('path' => theme_get_setting('ilogo'), 'attributes' => array('class'=>'f-logo'))) . '</div>';
+      $output .= '<div class="f-copy-wrapper">&copy;&nbsp' . date('Y') . '</div>';
+      break;
+    case 'top_banner':
+      $nid = arg(1);
+      $node = node_load($nid);
+      if (isset($node->field_banner_image['und'][0]['uri'])){
+        $banner_uri = $node->field_banner_image['und'][0]['uri'];
+        $banner_img = theme('image_style', array(
+          'style_name' => 'top_banner',
+          'path' => $banner_uri,
+        ));
+        $output .= $banner_img;
+      }
+
+      break;
+  }
+  $block['content'] = $output;
+  return $block;
+}
+
+/*
+* Implements hook_node_view().
+*/
+function custom_addhands_node_view($node){
+  // Убираем заголовок со всех страниц
+  if ($node->type == 'page'){
+    $node->title ='';
+    //drupal_set_title('');
+  }
+}
+
+/**
+ * Implementationof hook_form_alter()
+ * Removes name field from registration form
+ *
+ * @param array $form
+ * @param array $form_state
+ * @param string $form_id
+ */
+function custom_addhands_form_alter(&$form, &$form_state, $form_id)
+{
+  if ($form_id == 'user_register_form') {
+    drupal_add_js(drupal_get_path('module', 'custom_addhands') . '/addhands.js');
+    if (isset($form['account']) && is_array($form['account'])) {
+      $form['account']['name']['#access'] = FALSE;
+      $form['account']['name']['#value'] = user_password();
+    }
+    else {
+      $form['name']['#access'] = FALSE;
+      $form['name']['#value'] = user_password();
+    }
+
+    $footer_text = variable_get('user_register_footer_text', array('value' => '', 'format' => 'full_html'));
+    $form['user_register_footer_text'] = array(
+      '#markup' => $footer_text['value'],
+      '#weight' => 100,
+    );
+    $form['actions']['#weight'] = 101;
+  }
+  else if ($form_id == 'advert_node_form') {
+    //выводим чекбоксы деталей объявления в 3 колонки
+    if ($form['field_details']['und']['#type'] == 'checkboxes'){
+      $form['field_details']['und']['#theme'] = array('multicolumn_options');
+      $form['field_details']['und']['#columns'] = 3;
+      $form['field_details']['und']['#title'] = '';
+    }
+  }
+/*
+  //edit user form
+  if ($form_id == 'user_profile_form' && isset($form['account']['name']['#default_value'])){
+    $form['account']['name']['#default_value'] = preg_replace('/[^\x{80}-\x{F7} a-z0-9@_.\'-]/i', '_', $form['account']['name']['#default_value']);
+  }*/
+}
+
+/**
+ * Implements hook_user_presave().
+ */
+function custom_addhands_user_presave(&$edit, &$account, $category = NULL) {
+  if (isset($edit['name']) && $account->is_new === TRUE){
+    //Устанавливаем имя пользователя равное email
+    $edit['name'] = $edit['mail'];
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function custom_addhands_theme() {
+  return array(
+    'multicolumn_options' => array(
+      'render element' => 'form',
+    ),
+  );
+}
+
+/**
+ * Theme function to format elements into multiple columns
+ */
+function theme_multicolumn_options($element) {
+  $stripped_element = array_values($element);
+  $element = $stripped_element[0];
+
+  // Initialize variables.
+  $output = '';
+  $total_columns = (isset($element['#columns'])) ? $element['#columns'] : 2;
+  $total_options = count($element['#options']);
+  $options_per_column = ceil($total_options / $total_columns);
+  $keys = array_keys($element['#options']);
+  $type = $element[$keys[0]]['#type'];
+
+  // Start wrapper div.
+  $output .= '<div class="multicolumn-options-wrapper clearfix">';
+  $current_column = 1;
+  $current_option = 0;
+
+  while ($current_column <= $total_columns) {
+    // Start column div.
+    $output .=  '<div class="multicolumn-options-column" style="width: ' . 100 / $total_columns . '%; float: left">';
+
+    // Keep looping through until the maximum options per column are reached,
+    // or you run out of options.
+    while ($current_option < $options_per_column * $current_column
+      && $current_option < $total_options) {
+
+      // Output as either check or radio button depending on the element type.
+      $output .= drupal_render($element[$keys[$current_option]]);
+      $current_option++;
+    }
+
+    // End column div.
+    $output .= '</div>';
+    $current_column++;
+  }
+
+  // End wrapper div.
+  $output .= '</div>';
+
+  return $output;
+}

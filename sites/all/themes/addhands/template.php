@@ -12,12 +12,17 @@
  */
 
 
-function  addhands_form_user_login_block_alter(&$form, &$form_state)
-{
+function  addhands_form_user_login_block_alter(&$form, &$form_state) {
 	$form['name']['#size'] = 29;
 	$form['pass']['#size'] = 29;
 
 	$form['links']['#markup'] = l(t('Request new password'), 'user/password', array('attributes' => array('title' => t('Request new password via e-mail.'))));
 	$form['links']['#weight'] = 5;
 	$form['fbconnect_button']['#weight'] = -3;
+}
+
+function addhands_process_page(&$vars) {
+  if (arg(0) == 'user'){
+    $vars['title'] = FALSE;
+  }
 }
