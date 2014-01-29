@@ -10,9 +10,9 @@
 function feature_advert_config_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-aadvert_zone_sell-body'
-  $field_instances['node-aadvert_zone_sell-body'] = array(
-    'bundle' => 'aadvert_zone_sell',
+  // Exported field_instance: 'node-advert_zone_sell-body'
+  $field_instances['node-advert_zone_sell-body'] = array(
+    'bundle' => 'advert_zone_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -55,9 +55,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-aadvert_zone_sell-field_about_advert'
-  $field_instances['node-aadvert_zone_sell-field_about_advert'] = array(
-    'bundle' => 'aadvert_zone_sell',
+  // Exported field_instance: 'node-advert_zone_sell-field_about_advert'
+  $field_instances['node-advert_zone_sell-field_about_advert'] = array(
+    'bundle' => 'advert_zone_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -95,9 +95,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-aadvert_zone_sell-field_map'
-  $field_instances['node-aadvert_zone_sell-field_map'] = array(
-    'bundle' => 'aadvert_zone_sell',
+  // Exported field_instance: 'node-advert_zone_sell-field_map'
+  $field_instances['node-advert_zone_sell-field_map'] = array(
+    'bundle' => 'advert_zone_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -140,9 +140,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-aadvert_zone_sell-field_photo'
-  $field_instances['node-aadvert_zone_sell-field_photo'] = array(
-    'bundle' => 'aadvert_zone_sell',
+  // Exported field_instance: 'node-advert_zone_sell-field_photo'
+  $field_instances['node-advert_zone_sell-field_photo'] = array(
+    'bundle' => 'advert_zone_sell',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -190,9 +190,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-aadvert_zone_sell-field_price'
-  $field_instances['node-aadvert_zone_sell-field_price'] = array(
-    'bundle' => 'aadvert_zone_sell',
+  // Exported field_instance: 'node-advert_zone_sell-field_price'
+  $field_instances['node-advert_zone_sell-field_price'] = array(
+    'bundle' => 'advert_zone_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -236,9 +236,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-aadvert_zone_sell-field_zone'
-  $field_instances['node-aadvert_zone_sell-field_zone'] = array(
-    'bundle' => 'aadvert_zone_sell',
+  // Exported field_instance: 'node-advert_zone_sell-field_zone'
+  $field_instances['node-advert_zone_sell-field_zone'] = array(
+    'bundle' => 'advert_zone_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -282,9 +282,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-aadvert_zone_sell-field_zone_details'
-  $field_instances['node-aadvert_zone_sell-field_zone_details'] = array(
-    'bundle' => 'aadvert_zone_sell',
+  // Exported field_instance: 'node-advert_zone_sell-field_zone_details'
+  $field_instances['node-advert_zone_sell-field_zone_details'] = array(
+    'bundle' => 'advert_zone_sell',
     'default_value' => array(),
     'deleted' => 0,
     'description' => '',
@@ -319,9 +319,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-aadvert_zone_sell-field_zone_documents'
-  $field_instances['node-aadvert_zone_sell-field_zone_documents'] = array(
-    'bundle' => 'aadvert_zone_sell',
+  // Exported field_instance: 'node-advert_zone_sell-field_zone_documents'
+  $field_instances['node-advert_zone_sell-field_zone_documents'] = array(
+    'bundle' => 'advert_zone_sell',
     'default_value' => array(
       0 => array(
         'tid' => 64,
@@ -360,9 +360,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-aadvert_zone_sell-field_zone_type'
-  $field_instances['node-aadvert_zone_sell-field_zone_type'] = array(
-    'bundle' => 'aadvert_zone_sell',
+  // Exported field_instance: 'node-advert_zone_sell-field_zone_type'
+  $field_instances['node-advert_zone_sell-field_zone_type'] = array(
+    'bundle' => 'advert_zone_sell',
     'default_value' => array(
       0 => array(
         'tid' => 63,

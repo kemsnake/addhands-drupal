@@ -13,10 +13,10 @@ function feature_advert_config_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_advert_description|node|aadvert_zone_sell|form';
+  $field_group->identifier = 'group_advert_description|node|advert_zone_sell|form';
   $field_group->group_name = 'group_advert_description';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'aadvert_zone_sell';
+  $field_group->bundle = 'advert_zone_sell';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -36,7 +36,7 @@ function feature_advert_config_field_group_info() {
       ),
     ),
   );
-  $export['group_advert_description|node|aadvert_zone_sell|form'] = $field_group;
+  $export['group_advert_description|node|advert_zone_sell|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -124,10 +124,10 @@ function feature_advert_config_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_details|node|aadvert_zone_sell|form';
+  $field_group->identifier = 'group_details|node|advert_zone_sell|form';
   $field_group->group_name = 'group_details';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'aadvert_zone_sell';
+  $field_group->bundle = 'advert_zone_sell';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -148,7 +148,7 @@ function feature_advert_config_field_group_info() {
       ),
     ),
   );
-  $export['group_details|node|aadvert_zone_sell|form'] = $field_group;
+  $export['group_details|node|advert_zone_sell|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -213,10 +213,10 @@ function feature_advert_config_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_short_info|node|aadvert_zone_sell|form';
+  $field_group->identifier = 'group_short_info|node|advert_zone_sell|form';
   $field_group->group_name = 'group_short_info';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'aadvert_zone_sell';
+  $field_group->bundle = 'advert_zone_sell';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -237,7 +237,7 @@ function feature_advert_config_field_group_info() {
       ),
     ),
   );
-  $export['group_short_info|node|aadvert_zone_sell|form'] = $field_group;
+  $export['group_short_info|node|advert_zone_sell|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

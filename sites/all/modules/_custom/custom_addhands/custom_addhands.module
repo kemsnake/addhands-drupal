@@ -130,9 +130,20 @@ function custom_addhands_form_alter(&$form, &$form_state, $form_id)
     );
     $form['actions']['#weight'] = 101;
   }
-  else if ($form_id == 'advert_node_form') {
+  else if (in_array($form_id, array('advert_house_rent_node_form', 'advert_house_sell_node_form', 'advert_zone_sell_node_form'))) {
+    dsm($form);
     //выводим чекбоксы деталей объявления в 3 колонки
-    if ($form['field_details']['und']['#type'] == 'checkboxes'){
+    if (isset($form['field_comfort']['und']['#type']) && $form['field_comfort']['und']['#type'] == 'checkboxes'){
+      $form['field_comfort']['und']['#theme'] = array('multicolumn_options');
+      $form['field_comfort']['und']['#columns'] = 3;
+      $form['field_comfort']['und']['#title'] = '';
+    }
+    if (isset($form['field_zone_details']['und']['#type']) && $form['field_zone_details']['und']['#type'] == 'checkboxes'){
+      $form['field_zone_details']['und']['#theme'] = array('multicolumn_options');
+      $form['field_zone_details']['und']['#columns'] = 3;
+      $form['field_zone_details']['und']['#title'] = '';
+    }
+    if (isset($form['field_details']['und']['#type']) && $form['field_details']['und']['#type'] == 'checkboxes'){
       $form['field_details']['und']['#theme'] = array('multicolumn_options');
       $form['field_details']['und']['#columns'] = 3;
       $form['field_details']['und']['#title'] = '';

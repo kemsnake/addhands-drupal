@@ -372,9 +372,9 @@ function feature_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: 'create aadvert_zone_sell content'.
-  $permissions['create aadvert_zone_sell content'] = array(
-    'name' => 'create aadvert_zone_sell content',
+  // Exported permission: 'create advert_zone_sell content'.
+  $permissions['create advert_zone_sell content'] = array(
+    'name' => 'create advert_zone_sell content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
     ),
@@ -442,9 +442,9 @@ function feature_permissions_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: 'delete any aadvert_zone_sell content'.
-  $permissions['delete any aadvert_zone_sell content'] = array(
-    'name' => 'delete any aadvert_zone_sell content',
+  // Exported permission: 'delete any advert_zone_sell content'.
+  $permissions['delete any advert_zone_sell content'] = array(
+    'name' => 'delete any advert_zone_sell content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -488,9 +488,9 @@ function feature_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete own aadvert_zone_sell content'.
-  $permissions['delete own aadvert_zone_sell content'] = array(
-    'name' => 'delete own aadvert_zone_sell content',
+  // Exported permission: 'delete own advert_zone_sell content'.
+  $permissions['delete own advert_zone_sell content'] = array(
+    'name' => 'delete own advert_zone_sell content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
     ),
@@ -651,9 +651,9 @@ function feature_permissions_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: 'edit any aadvert_zone_sell content'.
-  $permissions['edit any aadvert_zone_sell content'] = array(
-    'name' => 'edit any aadvert_zone_sell content',
+  // Exported permission: 'edit any advert_zone_sell content'.
+  $permissions['edit any advert_zone_sell content'] = array(
+    'name' => 'edit any advert_zone_sell content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -706,9 +706,9 @@ function feature_permissions_user_default_permissions() {
     'module' => 'media',
   );
 
-  // Exported permission: 'edit own aadvert_zone_sell content'.
-  $permissions['edit own aadvert_zone_sell content'] = array(
-    'name' => 'edit own aadvert_zone_sell content',
+  // Exported permission: 'edit own advert_zone_sell content'.
+  $permissions['edit own advert_zone_sell content'] = array(
+    'name' => 'edit own advert_zone_sell content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
     ),

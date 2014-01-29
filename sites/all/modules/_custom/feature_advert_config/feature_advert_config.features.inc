@@ -21,7 +21,7 @@ function feature_advert_config_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function feature_advert_config_node_info() {
   $items = array(
-    'aadvert_zone_sell' => array(
+    'advert_zone_sell' => array(
       'name' => t('Объявление о продаже земельного участка'),
       'base' => 'node_content',
       'description' => t('Объявление о продаже земельных участков'),
