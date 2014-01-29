@@ -10,9 +10,1055 @@
 function feature_advert_config_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-advert-body'
-  $field_instances['node-advert-body'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-aadvert_zone_sell-body'
+  $field_instances['node-aadvert_zone_sell-body'] = array(
+    'bundle' => 'aadvert_zone_sell',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Текст объявления',
+    'required' => 0,
+    'settings' => array(
+      'display_summary' => 0,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-aadvert_zone_sell-field_about_advert'
+  $field_instances['node-aadvert_zone_sell-field_about_advert'] = array(
+    'bundle' => 'aadvert_zone_sell',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_about_advert',
+    'label' => 'Что получает покупатель',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-aadvert_zone_sell-field_map'
+  $field_instances['node-aadvert_zone_sell-field_map'] = array(
+    'bundle' => 'aadvert_zone_sell',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'geofield',
+        'settings' => array(
+          'data' => 'full',
+        ),
+        'type' => 'geofield_wkt',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_map',
+    'label' => 'Карта',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'geofield_ymap',
+      'settings' => array(
+        'map_center' => '37.62221595263608,55.75378270800939',
+        'map_object_types' => array(
+          0 => 'point',
+        ),
+        'map_type' => 'yandex#map',
+        'map_zoom' => 10,
+      ),
+      'type' => 'geofield_ymap',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-aadvert_zone_sell-field_photo'
+  $field_instances['node-aadvert_zone_sell-field_photo'] = array(
+    'bundle' => 'aadvert_zone_sell',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_photo',
+    'label' => 'Фотографии',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-aadvert_zone_sell-field_price'
+  $field_instances['node-aadvert_zone_sell-field_price'] = array(
+    'bundle' => 'aadvert_zone_sell',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_price',
+    'label' => 'Цена',
+    'required' => 1,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => 'рублей',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-aadvert_zone_sell-field_zone'
+  $field_instances['node-aadvert_zone_sell-field_zone'] = array(
+    'bundle' => 'aadvert_zone_sell',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_zone',
+    'label' => 'Площаль участка',
+    'required' => 1,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => 'кв. м',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-aadvert_zone_sell-field_zone_details'
+  $field_instances['node-aadvert_zone_sell-field_zone_details'] = array(
+    'bundle' => 'aadvert_zone_sell',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_zone_details',
+    'label' => 'Детали',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-aadvert_zone_sell-field_zone_documents'
+  $field_instances['node-aadvert_zone_sell-field_zone_documents'] = array(
+    'bundle' => 'aadvert_zone_sell',
+    'default_value' => array(
+      0 => array(
+        'tid' => 64,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_zone_documents',
+    'label' => 'Документы',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-aadvert_zone_sell-field_zone_type'
+  $field_instances['node-aadvert_zone_sell-field_zone_type'] = array(
+    'bundle' => 'aadvert_zone_sell',
+    'default_value' => array(
+      0 => array(
+        'tid' => 63,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_zone_type',
+    'label' => 'Тип участка',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-body'
+  $field_instances['node-advert_house_rent-body'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Текст объявления',
+    'required' => 0,
+    'settings' => array(
+      'display_summary' => 0,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_about_advert'
+  $field_instances['node-advert_house_rent-field_about_advert'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_about_advert',
+    'label' => 'Что получает арендатель',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_area'
+  $field_instances['node-advert_house_rent-field_area'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_area',
+    'label' => 'Площадь',
+    'required' => 1,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => 'кв. м',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_build_type'
+  $field_instances['node-advert_house_rent-field_build_type'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => array(
+      0 => array(
+        'tid' => 19,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_build_type',
+    'label' => 'Тип сооружения',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_comfort'
+  $field_instances['node-advert_house_rent-field_comfort'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_comfort',
+    'label' => 'Удобства',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_full_house'
+  $field_instances['node-advert_house_rent-field_full_house'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_full_house',
+    'label' => 'Дом целиком',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_guests_count'
+  $field_instances['node-advert_house_rent-field_guests_count'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_guests_count',
+    'label' => 'Кол-во гостей',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_map'
+  $field_instances['node-advert_house_rent-field_map'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'geofield',
+        'settings' => array(
+          'data' => 'full',
+        ),
+        'type' => 'geofield_wkt',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_map',
+    'label' => 'Карта',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'geofield_ymap',
+      'settings' => array(
+        'map_center' => '37.62221595263608,55.75378270800939',
+        'map_object_types' => array(
+          'line' => 0,
+          'point' => 'point',
+          'polygon' => 0,
+        ),
+        'map_type' => 'yandex#map',
+        'map_zoom' => 10,
+      ),
+      'type' => 'geofield_ymap',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_number_of_storeys'
+  $field_instances['node-advert_house_rent-field_number_of_storeys'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => array(
+      0 => array(
+        'tid' => 6,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_number_of_storeys',
+    'label' => 'Этажность',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_photo'
+  $field_instances['node-advert_house_rent-field_photo'] = array(
+    'bundle' => 'advert_house_rent',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 14,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_photo',
+    'label' => 'Фотографии',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_price'
+  $field_instances['node-advert_house_rent-field_price'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_price',
+    'label' => 'Цена',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => 'рублей',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_room_count'
+  $field_instances['node-advert_house_rent-field_room_count'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_room_count',
+    'label' => 'Кол-во комнат',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_toilet_count'
+  $field_instances['node-advert_house_rent-field_toilet_count'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_toilet_count',
+    'label' => 'Кол-во санузлов',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_wall_type'
+  $field_instances['node-advert_house_rent-field_wall_type'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => array(
+      0 => array(
+        'tid' => 11,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_wall_type',
+    'label' => 'Стены',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_rent-field_zone'
+  $field_instances['node-advert_house_rent-field_zone'] = array(
+    'bundle' => 'advert_house_rent',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'сотка = 100 кв. м
+гектар = 1000 кв. м',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_zone',
+    'label' => 'Площаль участка',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => 'кв. м',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_sell-body'
+  $field_instances['node-advert_house_sell-body'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Описание должно быть длиной минимум 15 слов. Самые хорошие объявления состоят из 150 слов и более.',
@@ -36,7 +1082,7 @@ function feature_advert_config_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => 'Body',
+    'label' => 'Текст объявления',
     'required' => 0,
     'settings' => array(
       'display_summary' => 0,
@@ -51,13 +1097,13 @@ function feature_advert_config_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_about_advert'
-  $field_instances['node-advert-field_about_advert'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_about_advert'
+  $field_instances['node-advert_house_sell-field_about_advert'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -95,50 +1141,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_advert_type'
-  $field_instances['node-advert-field_advert_type'] = array(
-    'bundle' => 'advert',
-    'default_value' => array(
-      0 => array(
-        'tid' => 5,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_advert_type',
-    'label' => 'Тип объявления',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-advert-field_area'
-  $field_instances['node-advert-field_area'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_area'
+  $field_instances['node-advert_house_sell-field_area'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -182,9 +1187,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_build_type'
-  $field_instances['node-advert-field_build_type'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_build_type'
+  $field_instances['node-advert_house_sell-field_build_type'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => array(
       0 => array(
         'tid' => 10,
@@ -223,9 +1228,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_details'
-  $field_instances['node-advert-field_details'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_details'
+  $field_instances['node-advert_house_sell-field_details'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -260,9 +1265,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_facing_type'
-  $field_instances['node-advert-field_facing_type'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_facing_type'
+  $field_instances['node-advert_house_sell-field_facing_type'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => array(
       0 => array(
         'tid' => 14,
@@ -301,9 +1306,57 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_number_of_storeys'
-  $field_instances['node-advert-field_number_of_storeys'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_map'
+  $field_instances['node-advert_house_sell-field_map'] = array(
+    'bundle' => 'advert_house_sell',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'geofield',
+        'settings' => array(
+          'data' => 'full',
+        ),
+        'type' => 'geofield_wkt',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_map',
+    'label' => 'Карта',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'geofield_ymap',
+      'settings' => array(
+        'map_center' => '37.62221595263608,55.75378270800939',
+        'map_object_types' => array(
+          'line' => 0,
+          'point' => 'point',
+          'polygon' => 0,
+        ),
+        'map_type' => 'yandex#map',
+        'map_zoom' => 10,
+      ),
+      'type' => 'geofield_ymap',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'node-advert_house_sell-field_number_of_storeys'
+  $field_instances['node-advert_house_sell-field_number_of_storeys'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => array(
       0 => array(
         'tid' => 19,
@@ -342,9 +1395,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_photo'
-  $field_instances['node-advert-field_photo'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_photo'
+  $field_instances['node-advert_house_sell-field_photo'] = array(
+    'bundle' => 'advert_house_sell',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -392,9 +1445,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_price'
-  $field_instances['node-advert-field_price'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_price'
+  $field_instances['node-advert_house_sell-field_price'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -442,9 +1495,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_ready_state'
-  $field_instances['node-advert-field_ready_state'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_ready_state'
+  $field_instances['node-advert_house_sell-field_ready_state'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => array(
       0 => array(
         'tid' => 8,
@@ -483,9 +1536,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_room_count'
-  $field_instances['node-advert-field_room_count'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_room_count'
+  $field_instances['node-advert_house_sell-field_room_count'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -529,9 +1582,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_toilet_count'
-  $field_instances['node-advert-field_toilet_count'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_toilet_count'
+  $field_instances['node-advert_house_sell-field_toilet_count'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -575,9 +1628,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_wall_type'
-  $field_instances['node-advert-field_wall_type'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_wall_type'
+  $field_instances['node-advert_house_sell-field_wall_type'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => array(
       0 => array(
         'tid' => 12,
@@ -616,9 +1669,9 @@ function feature_advert_config_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-advert-field_zone'
-  $field_instances['node-advert-field_zone'] = array(
-    'bundle' => 'advert',
+  // Exported field_instance: 'node-advert_house_sell-field_zone'
+  $field_instances['node-advert_house_sell-field_zone'] = array(
+    'bundle' => 'advert_house_sell',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'сотка = 100 кв. м
@@ -645,7 +1698,7 @@ function feature_advert_config_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_zone',
-    'label' => 'Участок',
+    'label' => 'Площаль участка',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -665,22 +1718,30 @@ function feature_advert_config_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
   t('Готовность');
   t('Детали');
+  t('Документы');
+  t('Дом целиком');
+  t('Карта');
+  t('Кол-во гостей');
   t('Кол-во комнат');
   t('Кол-во санузлов');
   t('Описание должно быть длиной минимум 15 слов. Самые хорошие объявления состоят из 150 слов и более.');
   t('Отделка');
   t('Площадь');
+  t('Площаль участка');
   t('Стены');
-  t('Тип объявления');
+  t('Текст объявления');
   t('Тип сооружения');
-  t('Участок');
+  t('Тип участка');
+  t('Удобства');
   t('Фотографии');
   t('Цена');
+  t('Что получает арендатель');
   t('Что получает покупатель');
   t('Этажность');
+  t('сотка = 100 кв. м
+гектар = 1000 кв. м');
   t('сотка = 100 кв. м
 гектар = 1000 кв. м');
 

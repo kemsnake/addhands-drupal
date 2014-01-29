@@ -10,47 +10,31 @@
 function feature_advert_config_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'create advert content'.
-  $permissions['create advert content'] = array(
-    'name' => 'create advert content',
+  // Exported permission: 'create advert_house_sell content'.
+  $permissions['create advert_house_sell content'] = array(
+    'name' => 'create advert_house_sell content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
 
-  // Exported permission: 'create webform content'.
-  $permissions['create webform content'] = array(
-    'name' => 'create webform content',
+  // Exported permission: 'delete any advert_house_sell content'.
+  $permissions['delete any advert_house_sell content'] = array(
+    'name' => 'delete any advert_house_sell content',
     'roles' => array(
       'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
 
-  // Exported permission: 'delete any advert content'.
-  $permissions['delete any advert content'] = array(
-    'name' => 'delete any advert content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own advert content'.
-  $permissions['delete own advert content'] = array(
-    'name' => 'delete own advert content',
+  // Exported permission: 'delete own advert_house_sell content'.
+  $permissions['delete own advert_house_sell content'] = array(
+    'name' => 'delete own advert_house_sell content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: 'delete terms in advert_types'.
-  $permissions['delete terms in advert_types'] = array(
-    'name' => 'delete terms in advert_types',
-    'roles' => array(),
-    'module' => 'taxonomy',
   );
 
   // Exported permission: 'delete terms in build_types'.
@@ -74,29 +58,22 @@ function feature_advert_config_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'edit any advert content'.
-  $permissions['edit any advert content'] = array(
-    'name' => 'edit any advert content',
+  // Exported permission: 'edit any advert_house_sell content'.
+  $permissions['edit any advert_house_sell content'] = array(
+    'name' => 'edit any advert_house_sell content',
     'roles' => array(
       'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
 
-  // Exported permission: 'edit own advert content'.
-  $permissions['edit own advert content'] = array(
-    'name' => 'edit own advert content',
+  // Exported permission: 'edit own advert_house_sell content'.
+  $permissions['edit own advert_house_sell content'] = array(
+    'name' => 'edit own advert_house_sell content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: 'edit terms in advert_types'.
-  $permissions['edit terms in advert_types'] = array(
-    'name' => 'edit terms in advert_types',
-    'roles' => array(),
-    'module' => 'taxonomy',
   );
 
   // Exported permission: 'edit terms in build_types'.
