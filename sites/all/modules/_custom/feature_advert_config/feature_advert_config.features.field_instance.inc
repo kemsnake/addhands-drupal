@@ -224,7 +224,7 @@ function feature_advert_config_field_default_field_instances() {
       'max' => '',
       'min' => '',
       'prefix' => '',
-      'suffix' => 'рублей',
+      'suffix' => ' руб.',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -864,7 +864,7 @@ function feature_advert_config_field_default_field_instances() {
       'max' => '',
       'min' => '',
       'prefix' => '',
-      'suffix' => 'рублей',
+      'suffix' => ' руб.',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1479,7 +1479,7 @@ function feature_advert_config_field_default_field_instances() {
       'max' => '',
       'min' => '',
       'prefix' => '',
-      'suffix' => 'рублей',
+      'suffix' => ' руб.',
       'user_register_form' => FALSE,
     ),
     'widget' => array(

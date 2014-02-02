@@ -467,3 +467,133 @@ a.login-button:hover {
     text-decoration: none;
     padding-top: 3px;
 }
+
+/* user dropdown menu */
+#block-custom-addhands-user-header-dropdown-menu{
+    float:right;
+    margin-top:5px;
+    margin-right:0px;
+}
+#block-custom-addhands-user-header-dropdown-menu  .header-dropdown ul li{
+    padding-bottom: 3px;
+}
+#block-custom-addhands-user-header-dropdown-menu  .header-dropdown ul li a{
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+#block-custom-addhands-user-header-dropdown-menu  .header-dropdown{
+    z-index: 1000!important;
+    position: relative;
+    background-color: #ffffff;
+    behavior: url(styles/pie.htc);
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    -webkit-box-shadow:  0 0 5px rgba(0,0,0,0.5);
+    filter: progid:DXImageTransform.Microsoft.dropshadow(offX=0, offY=0, color=rgba(0,0,0,0.5));
+    filter: progid:DXImageTransform.Microsoft.shadow(direction=120, color=#000000, strength=5);
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #D0D0D0;
+    width:100%;
+    padding:5px;
+}
+
+#block-custom-addhands-user-header-dropdown-menu .content{
+    padding-top: 1px;
+}
+
+span.arrow-user-menu{
+    background: url('../images/arrow_down.png') no-repeat;
+    display: block;
+    float: right;
+    width: 5px;
+    margin: 10px 0 0 7px;
+
+}
+#dropdown_link .hello-msg{
+    float: right;
+    text-align: right;
+    text-decoration: underline !important;
+    font-size: 14px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.dropdown-link-div{
+    overflow: hidden;
+}
+#block-custom-addhands-user-header-dropdown-menu  .header-dropdown::before{
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-bottom-color: #D0D0D0;
+    top: -9px;
+    right: 15px;
+    position: absolute;
+}
+
+/* end user dropdown menu */
+
+/* user header menu */
+#block-custom-addhands-user-header-menu {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.header-user-menu ul li {
+    display: block;
+    float:left;
+    margin-right: 25px;
+}
+
+.header-user-menu li a {
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.header-user-menu li a.active {
+    text-decoration: none;
+}
+
+/* end user header menu */
+
+/* my-advert-view */
+.my-advert-view .advert-row {
+    float: left;
+    width:100%;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+.my-advert-view .view-column{
+    float:left;
+}
+.my-advert-view .col-1{
+    width:24%;
+    margin-right: 1%;
+}
+.my-advert-view .col-2{
+    width:49%;
+    margin-right: 1%;
+}
+.my-advert-view .col-3{
+    width:24%;
+    margin-right: 1%;
+}
+
+.my-advert-view .advert-title h2{
+    margin-top:0;
+    margin-bottom: 5px;
+}
+.my-advert-view .advert-body{
+    margin-bottom: 5px;
+    height: 80px;
+}
+.my-advert-view .advert-links a{
+    margin-right: 15px;
+}
+.my-advert-view .advert-price{
+    float: right;
+}
+/* end my-advert-view */

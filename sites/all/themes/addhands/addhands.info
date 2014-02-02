@@ -27,5 +27,6 @@ stylesheets[print][] = css/print.css
 stylesheets[all][] = css/nicki_ec_custom_style.css
 
 scripts[] = scripts/box-shadow.min.js
+scripts[] = scripts/visual.js
 
 settings[ilogo] = 'sites/all/themes/addhands/ilogo.png'

@@ -7,7 +7,7 @@ function custom_addhands_menu(){
   $items = array();
 
   $items['main'] = array(
-    'page callback' => 'custom_addhands_frontpage_callback',
+    'page callback' => '_custom_addhands_frontpage_callback',
     'access callback' => true,
     'title' => '',
     'type' => MENU_CALLBACK,
@@ -25,13 +25,111 @@ function custom_addhands_menu(){
     'title' => 'Настройки addhands',
   );
 
+  $items['user/%user/profile'] = array(
+    'title' => 'Профиль',
+    'access arguments' => array('cancel account'),
+    'page callback' => '_custom_addhands_user_profile_callback',
+    'page arguments' => array(1),
+    'menu_name' => 'menu-user-profile',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['user/%user/create_advert'] = array(
+    'title' => 'Добавить объявление',
+    'access arguments' => array('create advert_house_sell content'),
+    'page callback' => '_custom_addhands_create_advert_callback',
+    'page arguments' => array(1),
+    'menu_name' => 'user-profile',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['node/%node/publish'] = array(
+    'title' => 'Publish Node',
+    'page callback' => '_custom_addhands_change_advert_status',
+    'page arguments' => array(1, '1', 3),
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['node/%node/unpublish'] = array(
+    'title' => 'Publish Node',
+    'page callback' => '_custom_addhands_change_advert_status',
+    'page arguments' => array(1, '0', 3),
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['node/%node/delete'] = array(
+    'title' => 'Publish Node',
+    'page callback' => '_custom_addhands_delete_node',
+    'page arguments' => array(1),
+    'access callback' => 'node_access',
+    'access arguments' => array('delete', 1),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
+}
+
+/*
+* Implements hook_menu_alter().
+*/
+function custom_addhands_menu_alter(&$items){
+  $items['user/%user/edit']['menu_name'] = 'menu-user-profile';
+  $items['node']['access callback'] = FALSE;
+}
+
+function _custom_addhands_user_profile_callback($user) {
+  drupal_goto('user/' . $user->uid . '/adverts');
+}
+
+function _custom_addhands_create_advert_callback($user){
+  $advert_types = array_filter(variable_get('node_advert_types', array()));
+  $links = array();
+  $type_names = node_type_get_names();
+  $destination = 'user/' . arg(1) . '/adverts';
+  foreach ($advert_types as $type){
+    $links[] = l($type_names[$type], 'node/add/' . str_replace('_', '-', $type), array('query' => array('destination' => $destination)));
+  }
+  $output = theme('item_list', array(
+    'items' => $links,
+    'title' => 'Добавить',
+  ));
+  return $output;
+}
+
+
+function _custom_addhands_delete_node($node){
+  if (is_object($node)){
+    node_delete($node->nid);
+  }
+}
+
+function _custom_addhands_change_advert_status($node, $status = NULL, $ajax = null){
+  if (is_object($node) && isset($status)){
+    $node->status = (int)$status;
+    node_save($node);
+    if (!is_null($ajax)){
+      drupal_json_output(array('code'=>1, 'error' => ''));
+    }
+    else{
+      if ($status == 0){
+        drupal_set_message(t('Объявление !advert снято с публикации', array('!advert'=>$node->title)));
+      }
+      else{
+        drupal_set_message(t('Объявление !advert опубликовано', array('!advert'=>$node->title)));
+      }
+      drupal_goto('user/' . $node->uid . '/adverts');
+    }
+  }
 }
 
 /*
  * Callback for frontpage hack
  */
-function custom_addhands_frontpage_callback(){
+function _custom_addhands_frontpage_callback(){
   drupal_set_title('');
   drupal_add_js(drupal_get_path('module', 'custom_addhands') . '/addhands.js');
   return '';
@@ -49,6 +147,13 @@ function custom_addhands_settings($form, $form_state){
     '#format' => $default_value_footer['format'],
   );
 
+  $form['node_advert_types'] = array(
+    '#type' => 'checkboxes',
+    '#title' => 'Типы материалов для объявлений',
+    '#default_value' => variable_get('node_advert_types', array()),
+    '#options' => node_type_get_names(),
+  );
+
   return system_settings_form($form);
 }
 
@@ -58,7 +163,8 @@ function custom_addhands_settings($form, $form_state){
 function custom_addhands_block_info(){
   $block['footer_logo']['info'] = t('Footer Logo');
   $block['top_banner']['info'] = t('Верхний баннер');
-
+  $block['user_header_dropdown_menu']['info'] = t('Header user dropdown menu');
+  $block['user_header_menu']['info'] = t('Header user menu');
   return $block;
 }
 
@@ -84,8 +190,33 @@ function custom_addhands_block_view($delta){
         ));
         $output .= $banner_img;
       }
-
       break;
+    case 'user_header_dropdown_menu':
+      global $user;
+      $arrow = '<span class="arrow-user-menu">&nbsp;</span>';
+      $hello_msg = '<div class="hello-msg">Личный кабинет</div>';
+      $output = '<div class="dropdown-link-div">' . l($arrow . $hello_msg, 'user', array('attributes' => array('id' => 'dropdown_link'), 'html' => true)) . '</div>';
+      $output .= '<div class="header-dropdown">';
+      $items = array();
+      $items[] = l(t('Мои объявления'), 'user/' . $user->uid . '/adverts');
+      $items[] = l(t('Создать объявление'), 'user/' . $user->uid . '/create_advert');
+      $items[] = l(t('Редактировать данные'), 'user/' . $user->uid . '/edit');
+      $items[] = l(t('Выход'), 'user/logout');
+      $output .= theme('item_list', array('items' => $items));
+      $output .='</div>';
+      break;
+
+    case 'user_header_menu':
+      $uid = arg(1);
+      $output = '<div class="header-user-menu">';
+      $items = array();
+      $items[] = l(t('Мои объявления'), 'user/' . $uid . '/adverts');
+      $items[] = l(t('Создать объявление'), 'user/' . $uid . '/create_advert');
+      $items[] = l(t('Редактировать данные'), 'user/' . $uid . '/edit');
+      $output .= theme('item_list', array('items' => $items));
+      $output .='</div>';
+      break;
+
   }
   $block['content'] = $output;
   return $block;
@@ -131,7 +262,6 @@ function custom_addhands_form_alter(&$form, &$form_state, $form_id)
     $form['actions']['#weight'] = 101;
   }
   else if (in_array($form_id, array('advert_house_rent_node_form', 'advert_house_sell_node_form', 'advert_zone_sell_node_form'))) {
-    dsm($form);
     //выводим чекбоксы деталей объявления в 3 колонки
     if (isset($form['field_comfort']['und']['#type']) && $form['field_comfort']['und']['#type'] == 'checkboxes'){
       $form['field_comfort']['und']['#theme'] = array('multicolumn_options');

@@ -28,6 +28,7 @@
     };
     /**
      * Показываем|скрываем поля компании если выбрано соответсвующее значение
+     * todo change to conditional fields
      */
     Drupal.behaviors.showCompanyFields = {
         attach: function (context) {

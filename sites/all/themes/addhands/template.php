@@ -23,6 +23,11 @@ function  addhands_form_user_login_block_alter(&$form, &$form_state) {
 
 function addhands_process_page(&$vars) {
   if (arg(0) == 'user'){
+    //скрываем заголовки
     $vars['title'] = FALSE;
+    //скрываем табы от обычных пользователей на странице личного кабинета
+    if (isset($vars['tabs']) && !user_access('administer users')){
+      $vars['tabs'] = array();
+    }
   }
 }
