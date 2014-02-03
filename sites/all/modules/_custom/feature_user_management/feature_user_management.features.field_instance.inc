@@ -213,6 +213,40 @@ function feature_user_management_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_user_fio'
+  $field_instances['user-user-field_user_fio'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_user_fio',
+    'label' => 'ФИО',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => 1,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_user_phone'
   $field_instances['user-user-field_user_phone'] = array(
     'bundle' => 'user',
@@ -259,6 +293,7 @@ function feature_user_management_field_default_field_instances() {
   t('Сайт');
   t('Телефон');
   t('Тип учетной записи');
+  t('ФИО');
 
   return $field_instances;
 }

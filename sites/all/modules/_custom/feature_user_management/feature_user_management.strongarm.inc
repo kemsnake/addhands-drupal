@@ -35,7 +35,7 @@ function feature_user_management_strongarm() {
           'weight' => '1',
         ),
         'locale' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
       ),
       'display' => array(),

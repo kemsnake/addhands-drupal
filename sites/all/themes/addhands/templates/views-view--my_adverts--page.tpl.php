@@ -7,10 +7,12 @@
 
 $results = $variables['view']->result;
 //dsm($results);
+if (!$variables['rows']){
+  print $variables['empty'];
+}
 print '<div class="view my-advert-view">';
 foreach ($results as $result) {
   $node = $result->_field_data['nid']['entity'];
-  //dsm($node);
   print '<div class="advert-row">';
     print '<div class="view-column col-1">';
       print '<div class="advert-photo">';
@@ -22,7 +24,12 @@ foreach ($results as $result) {
     print '<div class="view-column col-2">';
       print '<div class="advert-title">';
         $type_names = node_type_get_names();
-        print '<h2>' .$result->node_title . ' (' . $type_names[$result->node_type] . ')</h2>';
+        $title_link = l($result->node_title, 'node/' . $node->nid);
+        $destination = 'user/' . arg(1) . '/adverts';
+        $icon_path = drupal_get_path('theme', 'addhands') . '/images/pencil.ico';
+        $edit_link = l(theme_image(array('path' => $icon_path, 'attributes' => array('title' => 'Редактировать объявление'))),
+          'node/' . $result->nid . '/edit', array('query' => array('destination' => $destination), 'html' => TRUE));
+        print '<h2>' . $title_link . ' ' . $edit_link . ' (' . $type_names[$result->node_type] . ')</h2>';
       print '</div>';
 
       print '<div class="advert-body">';
@@ -30,12 +37,6 @@ foreach ($results as $result) {
         print views_trim_text($alter, $result->field_body[0]['rendered']['#markup']);
       print '</div>';
 
-      print '<div class="advert-links">';
-        $destination = 'user/' . arg(1) . '/adverts';
-        print l('Просмотр', 'node/' . $result->nid);
-        print l('Редактировать', 'node/' . $result->nid . '/edit', array('query' => array('destination' => $destination)));
-        print l('Удалить', 'node/' . $result->nid . '/delete', array('query' => array('destination' => $destination)));
-      print '</div>';
     //close col-2
     print '</div>';
 

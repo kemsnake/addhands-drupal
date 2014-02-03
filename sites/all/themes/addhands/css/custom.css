@@ -434,7 +434,7 @@ li.dhtml-menu-open > a {
 /* Fonts */
 body.not-front,
 body.not-front .leaf a {
-    font-family:  helvetica neue, helvetica, arial, sans-serif!important;
+    font-family:  Georgia, "Times New Roman", Times, serif;!important;
 }
 
 body.not-front .menu a {

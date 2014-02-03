@@ -23,9 +23,9 @@ function feature_user_management_field_group_info() {
     'label' => 'Данные организации',
     'weight' => '6',
     'children' => array(
-      0 => 'field_company_name',
-      1 => 'field_business_profile',
-      2 => 'field_company_address',
+      0 => 'field_business_profile',
+      1 => 'field_company_address',
+      2 => 'field_company_name',
       3 => 'field_company_site',
     ),
     'format_type' => 'fieldset',
