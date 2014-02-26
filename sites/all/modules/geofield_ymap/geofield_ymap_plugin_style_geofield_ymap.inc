@@ -13,10 +13,12 @@ class geofield_ymap_plugin_style_geofield_ymap extends views_plugin_style {
     $options['map_auto_centering'] = array('default' => FALSE);
     $options['map_auto_zooming'] = array('default' => FALSE);
     $options['map_clusterize'] = array('default' => FALSE);
+    $options['map_object_preset'] = array('default' => '');
     $options['hint_content_field'] = array('default' => '');
     $options['icon_content_field'] = array('default' => '');
-    $options['object_options']['options'] = array('default' => '');
-    $options['object_options']['use_tokens'] = array('default' => FALSE);
+    $options['preset_field'] = array('default' => '');
+    $options['additional_settings']['object_options'] = array('default' => '');
+    $options['additional_settings']['object_options_use_tokens'] = array('default' => FALSE);
 
     return $options;
   }
@@ -34,22 +36,22 @@ class geofield_ymap_plugin_style_geofield_ymap extends views_plugin_style {
     }
 
     $form['map_type'] = array(
-      '#title' => t('Map type'),
       '#type' => 'select',
+      '#title' => t('Map type'),
       '#options' => _geofield_ymap_get_map_types(),
       '#default_value' => $this->options['map_type'],
     );
 
     $form['map_center'] = array(
-      '#title' => t('Map center'),
       '#type' => 'textfield',
+      '#title' => t('Map center'),
       '#default_value' => $this->options['map_center'],
       '#size' => 40,
     );
 
     $form['map_zoom'] = array(
-      '#title' => t('Map zoom'),
       '#type' => 'textfield',
+      '#title' => t('Map zoom'),
       '#default_value' => $this->options['map_zoom'],
       '#size' => 5,
     );
@@ -73,30 +75,54 @@ class geofield_ymap_plugin_style_geofield_ymap extends views_plugin_style {
     );
 
     $form['hint_content_field'] = array(
-      '#title' => t('Hint content field'),
       '#type' => 'select',
+      '#title' => t('Hint content field'),
       '#options' => $field_options,
       '#default_value' => $this->options['hint_content_field'],
     );
 
     $form['icon_content_field'] = array(
-      '#title' => t('Icon content field'),
       '#type' => 'select',
+      '#title' => t('Icon content field'),
       '#options' => $field_options,
       '#default_value' => $this->options['icon_content_field'],
     );
 
-    $form['object_options'] = array(
+    $form['preset_field'] = array(
+      '#type' => 'select',
+      '#title' => t('Preset field'),
+      '#description' => t('Use next modules for replace field value to preset name: !modules', array(
+        '!modules' => '
+          <a href="https://drupal.org/sandbox/xandeadx/2205151" target="_blank">Views field replace value</a>,
+          <a href="https://drupal.org/project/views_regex_rewrite" target="_blank">Views Regex Rewrite</a>,
+          <a href="https://drupal.org/project/views_fieldrewrite" target="_blank">Views Field Rewrite</a>
+        ',
+      )),
+      '#options' => $field_options,
+      '#default_value' => $this->options['preset_field'],
+    );
+
+    $form['map_object_preset'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Default objects preset'),
+      '#description' => t('Default <a href="@url" target="_blank">preset name</a>.', array(
+        '@url' => 'http://api.yandex.ru/maps/doc/jsapi/beta/ref/reference/option.presetStorage.xml',
+      )),
+      '#default_value' => $this->options['map_object_preset'],
+      '#size' => 40,
+    );
+
+    $form['additional_settings'] = array(
       '#title' => t('Additional settings'),
       '#type' => 'fieldset',
       '#collapsible' => TRUE, 
       '#collapsed' => TRUE,
     );
 
-    $form['object_options']['options'] = array(
-      '#title' => t('Additional object options'),
-      '#description' => t('Additional object options in JSON format. <a href="@url" target="_blank">Settings list</a>. Example: !example', array(
-        '@url' => 'http://api.yandex.ru/maps/doc/jsapi/beta/ref/reference/GeoObject.xml#constructor-summary',
+    $form['additional_settings']['object_options'] = array(
+      '#title' => t('Object options'),
+      '#description' => t('Additional object options in JSON format. <a href="!url" target="_blank">Settings list</a>. Example: !example', array(
+        '!url' => 'http://api.yandex.ru/maps/doc/jsapi/beta/ref/reference/GeoObject.xml#constructor-summary',
         '!example' => '
           <code><br />
             {<br />
@@ -109,13 +135,13 @@ class geofield_ymap_plugin_style_geofield_ymap extends views_plugin_style {
         ',
       )),
       '#type' => 'textarea',
-      '#default_value' => $this->options['object_options']['options'],
+      '#default_value' => $this->options['additional_settings']['object_options'],
     );
 
-    $form['object_options']['use_tokens'] = array(
+    $form['additional_settings']['object_options_use_tokens'] = array(
       '#type' => 'checkbox',
       '#title' => t('Use replacement tokens (reduce performance)'),
-      '#default_value' => $this->options['object_options']['use_tokens'],
+      '#default_value' => $this->options['additional_settings']['object_options_use_tokens'],
     );
   }
 
@@ -138,16 +164,13 @@ class geofield_ymap_plugin_style_geofield_ymap extends views_plugin_style {
     $this->render_fields($this->view->result);
 
     geophp_load();
-
-    $objects = array(
-      'type' => 'FeatureCollection',
-      'features' => array(),
-    );
+    
+    $features = array();
 
     // Additional object options without tokens
     $object_options = array();
-    if ($this->options['object_options']['options'] && !$this->options['object_options']['use_tokens']) {
-      $object_options = json_decode($this->options['object_options']['options'], TRUE);
+    if ($this->options['additional_settings']['object_options'] && !$this->options['additional_settings']['object_options_use_tokens']) {
+      $object_options = json_decode($this->options['additional_settings']['object_options'], TRUE);
     }
 
     // Each on result rows
@@ -160,10 +183,11 @@ class geofield_ymap_plugin_style_geofield_ymap extends views_plugin_style {
       $baloon_content = trim($this->row_plugin->render($row));
       $hint_content = $this->options['hint_content_field'] ? trim($this->get_field($row_index, $this->options['hint_content_field'])) : '';
       $icon_content = $this->options['icon_content_field'] ? trim($this->get_field($row_index, $this->options['icon_content_field'])) : '';
+      $preset = $this->options['preset_field'] ? trim($this->get_field($row_index, $this->options['preset_field'])) : '';
 
       // Additional object options with tokens
-      if ($this->options['object_options']['options'] && $this->options['object_options']['use_tokens']) {
-        $object_options = $this->safe_tokenize_value($this->options['object_options']['options'], $row_index);
+      if ($this->options['additional_settings']['object_options'] && $this->options['additional_settings']['object_options_use_tokens']) {
+        $object_options = $this->safe_tokenize_value($this->options['additional_settings']['object_options'], $row_index);
         $object_options = json_decode($object_options, TRUE);
       }
 
@@ -187,26 +211,30 @@ class geofield_ymap_plugin_style_geofield_ymap extends views_plugin_style {
             $feature['properties']['iconContent'] = $icon_content;
             $feature['options']['preset'] = 'islands#blueStretchyIcon';
           }
+          if ($preset) {
+            $feature['options']['preset'] = $preset;
+          }
           if ($object_options) {
             $feature_options = isset($feature['options']) ? $feature['options'] : array();
             $feature['options'] = $object_options + $feature_options;
           }
-          $objects['features'][] = $feature;
+          $features[] = $feature;
         }
       }
     }
     unset($this->view->row_index);
 
     return array(
-      '#theme' => 'geofield_ymap',
-      '#map_objects' => $objects,
-      '#map_type' => $this->options['map_type'],
-      '#map_center' => $this->options['map_center'],
-      '#map_zoom' => $this->options['map_zoom'],
+      '#theme'              => 'geofield_ymap',
+      '#map_objects'        => $features ? array('type' => 'FeatureCollection', 'features' => $features) : '',
+      '#map_type'           => $this->options['map_type'],
+      '#map_center'         => $this->options['map_center'],
+      '#map_zoom'           => $this->options['map_zoom'],
       '#map_auto_centering' => $this->options['map_auto_centering'],
-      '#map_auto_zooming' => $this->options['map_auto_zooming'],
-      '#map_clusterize' => $this->options['map_clusterize'],
-      '#id' => drupal_html_id('geofield-ymap-' . $this->view->name . '-' . $this->view->current_display),
+      '#map_auto_zooming'   => $this->options['map_auto_zooming'],
+      '#map_clusterize'     => $this->options['map_clusterize'],
+      '#map_object_preset'  => $this->options['map_object_preset'],
+      '#id'                 => drupal_html_id('geofield-ymap-' . $this->view->name . '-' . $this->view->current_display),
     );
   }
 

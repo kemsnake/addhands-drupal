@@ -15,6 +15,7 @@ function geofield_ymap_field_formatter_info() {
         'map_auto_centering' => FALSE,
         'map_auto_zooming' => FALSE,
         'map_clusterize' => FALSE,
+        'map_object_preset' => '',
       ),
     ),
   );
@@ -68,6 +69,14 @@ function geofield_ymap_field_formatter_settings_form($field, $instance, $view_mo
     '#default_value' => $settings['map_clusterize'],
   );
 
+  $element['map_object_preset'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Preset name'),
+    '#description' => t('<a href="@url" target="_blank">Preset name</a>.', array('@url' => 'http://api.yandex.ru/maps/doc/jsapi/beta/ref/reference/option.presetStorage.xml')),
+    '#default_value' => $settings['map_object_preset'],
+    '#size' => 30,
+  );
+
   return $element;
 }
 
@@ -86,6 +95,7 @@ function geofield_ymap_field_formatter_settings_summary($field, $instance, $view
     t('Map auto centering: @map_auto_centering', array('@map_auto_centering' => $settings['map_auto_centering'] ? t('Yes') : t('No'))),
     t('Map auto zooming: @map_auto_zooming', array('@map_auto_zooming' => $settings['map_auto_zooming'] ? t('Yes') : t('No'))),
     t('Clusterize placemarks: @clusterize', array('@clusterize' => $settings['map_clusterize'] ? t('Yes') : t('No'))),
+    t('Preset name: @preset', array('@preset' => $settings['map_object_preset'])),
   );
 
   return implode('<br />', $summary);
@@ -107,6 +117,7 @@ function geofield_ymap_field_formatter_view($entity_type, $entity, $field, $inst
       '#map_auto_centering' => $settings['map_auto_centering'],
       '#map_auto_zooming' => $settings['map_auto_zooming'],
       '#map_clusterize' => $settings['map_clusterize'],
+      '#map_object_preset' => $settings['map_object_preset'],
       '#map_objects' => geofield_ymap_items_to_geojson($items),
     );
   }

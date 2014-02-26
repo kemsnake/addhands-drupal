@@ -30,6 +30,7 @@ function template_preprocess_geofield_ymap(&$variables) {
     'map_multiple',
     'map_clusterize',
     'map_object_types',
+    'map_object_preset',
     'map_input_id',
     'map_objects',
   );

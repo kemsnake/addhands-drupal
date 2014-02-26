@@ -13,6 +13,7 @@ function geofield_ymap_field_widget_info() {
         'map_center' => '37.62221595263608,55.75378270800939', // Moscow
         'map_zoom' => 10,
         'map_object_types' => array('point'),
+        'map_object_preset' => '',
       ),
       'behaviors' => array(
         'multiple values' => FIELD_BEHAVIOR_CUSTOM,
@@ -62,6 +63,13 @@ function geofield_ymap_field_widget_settings_form($field, $instance) {
     '#default_value' => $settings['map_object_types'],
   );
 
+  $form['map_object_preset'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Preset name'),
+    '#description' => t('<a href="@url" target="_blank">Preset name</a>.', array('@url' => 'http://api.yandex.ru/maps/doc/jsapi/beta/ref/reference/option.presetStorage.xml')),
+    '#default_value' => $settings['map_object_preset'],
+  );
+
   return $form;
 }
 
@@ -83,6 +91,7 @@ function geofield_ymap_field_widget_form(&$form, &$form_state, $field, $instance
     '#map_auto_centering' => TRUE,
     '#map_auto_zooming' => TRUE,
     '#map_object_types' => array_filter($settings['map_object_types']),
+    '#map_object_preset' => $settings['map_object_preset'],
     '#default_value' => geofield_ymap_items_to_geojson($items),
   );
 

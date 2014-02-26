@@ -31,9 +31,11 @@ function geofield_ymap_init() {
     drupal_add_js(array(
       'geofieldYmap' => array(
         'modulePath' => base_path() . $module_path,
+        'presetsPath' => variable_get('geofield_ymap_presets_path', ''),
+        'preset' => variable_get('geofield_ymap_preset', ''),
       ),
     ), 'setting');
-    drupal_add_js($module_path . '/geofield_ymap_loader.js');
+    drupal_add_js($module_path . '/js/geofield_ymap_loader.js');
   }
 }
 
@@ -45,22 +47,27 @@ function geofield_ymap_library() {
   $settings = array(
     'geofieldYmap' => array(
       'modulePath' => base_path() . $module_path,
+      'preset' => variable_get('geofield_ymap_preset', ''),
     ),
   );
-  return array(
+  $library = array(
     'geofield_ymap' => array(
       'title' => 'Geofield Yandex Maps',
       'version' => '1',
       'js' => array(
-        array('data' => '//api-maps.yandex.ru/2.1-dev/?lang=ru-RU&load=package.full&coordorder=longlat', 'type' => 'external'),
         array('data' => $settings, 'type' => 'setting'),
-        array('data' => $module_path . '/geofield_ymap.js'),
+        array('data' => '//api-maps.yandex.ru/2.1-dev/?lang=ru-RU&load=package.full&coordorder=longlat', 'type' => 'external'),
+        array('data' => $module_path . '/js/geofield_ymap.js'),
       ),
       'css' => array(
         array('data' => $module_path . '/geofield_ymap.css'),
       ),
     ),
   );
+  if ($presets_path = variable_get('geofield_ymap_presets_path', '')) {
+    $library['geofield_ymap']['js'][] = array('data' => $presets_path);
+  }
+  return $library;
 }
 
 /**
