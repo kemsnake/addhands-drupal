@@ -161,6 +161,7 @@ function custom_addhands_settings($form, $form_state){
  * Implements hook_block_info().
  */
 function custom_addhands_block_info(){
+  $block['advert_price']['info'] = t('Цена объявления');
   $block['footer_logo']['info'] = t('Footer Logo');
   $block['top_banner']['info'] = t('Верхний баннер');
   $block['user_header_dropdown_menu']['info'] = t('Header user dropdown menu');
@@ -175,6 +176,12 @@ function custom_addhands_block_view($delta){
   $output = '';
 
   switch($delta){
+    case 'advert_price':
+      $node = node_load(arg(1));
+      if (isset($node->field_price['und'][0]['value'])) {
+        $output = 'Цена: ' . number_format($node->field_price['und'][0]['value'],0,',', ' ') . ' рублей';
+      }
+      break;
     case 'footer_logo':
       $output = '<div class="f-logo-wrapper">' . theme('image', array('path' => theme_get_setting('ilogo'), 'attributes' => array('class'=>'f-logo'))) . '</div>';
       $output .= '<div class="f-copy-wrapper">&copy;&nbsp' . date('Y') . '</div>';

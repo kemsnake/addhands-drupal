@@ -13,13 +13,6 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'additional_settings__active_tab_advert_zone_sell';
-  $strongarm->value = 'edit-menu';
-  $export['additional_settings__active_tab_advert_zone_sell'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_advert_house_rent';
   $strongarm->value = 'edit-menu';
   $export['additional_settings__active_tab_advert_house_rent'] = $strongarm;
@@ -27,9 +20,9 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'diff_enable_revisions_page_node_advert_zone_sell';
-  $strongarm->value = 0;
-  $export['diff_enable_revisions_page_node_advert_zone_sell'] = $strongarm;
+  $strongarm->name = 'additional_settings__active_tab_advert_zone_sell';
+  $strongarm->value = 'edit-menu';
+  $export['additional_settings__active_tab_advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -41,9 +34,9 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'diff_show_preview_changes_node_advert_zone_sell';
+  $strongarm->name = 'diff_enable_revisions_page_node_advert_zone_sell';
   $strongarm->value = 0;
-  $export['diff_show_preview_changes_node_advert_zone_sell'] = $strongarm;
+  $export['diff_enable_revisions_page_node_advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -55,9 +48,9 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'diff_view_mode_preview_node_advert_zone_sell';
-  $strongarm->value = 'full';
-  $export['diff_view_mode_preview_node_advert_zone_sell'] = $strongarm;
+  $strongarm->name = 'diff_show_preview_changes_node_advert_zone_sell';
+  $strongarm->value = 0;
+  $export['diff_show_preview_changes_node_advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -69,26 +62,35 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__advert_zone_sell';
-  $strongarm->value = array(
-    'view_modes' => array(),
-    'extra_fields' => array(
-      'form' => array(
-        'title' => array(
-          'weight' => '1',
-        ),
-      ),
-      'display' => array(),
-    ),
-  );
-  $export['field_bundle_settings_node__advert_zone_sell'] = $strongarm;
+  $strongarm->name = 'diff_view_mode_preview_node_advert_zone_sell';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__advert_house_rent';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'cck_blocks' => array(
+        'custom_settings' => TRUE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
@@ -105,7 +107,26 @@ function feature_advert_config_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__advert_house_sell';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'cck_blocks' => array(
+        'custom_settings' => TRUE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
@@ -120,9 +141,38 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'language_content_type_advert_zone_sell';
-  $strongarm->value = '0';
-  $export['language_content_type_advert_zone_sell'] = $strongarm;
+  $strongarm->name = 'field_bundle_settings_node__advert_zone_sell';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'cck_blocks' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array(
+          'weight' => '1',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -141,9 +191,9 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_advert_zone_sell';
-  $strongarm->value = array();
-  $export['menu_options_advert_zone_sell'] = $strongarm;
+  $strongarm->name = 'language_content_type_advert_zone_sell';
+  $strongarm->value = '0';
+  $export['language_content_type_advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -162,9 +212,9 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_advert_zone_sell';
-  $strongarm->value = 'main-menu:0';
-  $export['menu_parent_advert_zone_sell'] = $strongarm;
+  $strongarm->name = 'menu_options_advert_zone_sell';
+  $strongarm->value = array();
+  $export['menu_options_advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -183,11 +233,9 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_advert_zone_sell';
-  $strongarm->value = array(
-    0 => 'status',
-  );
-  $export['node_options_advert_zone_sell'] = $strongarm;
+  $strongarm->name = 'menu_parent_advert_zone_sell';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -210,9 +258,11 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_advert_zone_sell';
-  $strongarm->value = '0';
-  $export['node_preview_advert_zone_sell'] = $strongarm;
+  $strongarm->name = 'node_options_advert_zone_sell';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -231,9 +281,9 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_advert_zone_sell';
-  $strongarm->value = 0;
-  $export['node_submitted_advert_zone_sell'] = $strongarm;
+  $strongarm->name = 'node_preview_advert_zone_sell';
+  $strongarm->value = '0';
+  $export['node_preview_advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -252,9 +302,9 @@ function feature_advert_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'save_continue_advert_zone_sell';
-  $strongarm->value = 'Save and add fields';
-  $export['save_continue_advert_zone_sell'] = $strongarm;
+  $strongarm->name = 'node_submitted_advert_zone_sell';
+  $strongarm->value = 0;
+  $export['node_submitted_advert_zone_sell'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -262,6 +312,13 @@ function feature_advert_config_strongarm() {
   $strongarm->name = 'save_continue_advert_house_rent';
   $strongarm->value = 'Save and add fields';
   $export['save_continue_advert_house_rent'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'save_continue_advert_zone_sell';
+  $strongarm->value = 'Save and add fields';
+  $export['save_continue_advert_zone_sell'] = $strongarm;
 
   return $export;
 }

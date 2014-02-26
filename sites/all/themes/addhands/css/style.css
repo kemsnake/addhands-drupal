@@ -121,7 +121,7 @@ div.meta,
 p.comment-time,
 table,
 .breadcrumb {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  //font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 input,
 textarea,
@@ -597,18 +597,7 @@ h1#page-title {
   height: 20px;
   margin: 1px 5px 0 0; /* LTR */
 }
-.field-type-taxonomy-term-reference {
-  margin: 0 0 1.2em;
-}
-.field-type-taxonomy-term-reference .field-label {
-  font-weight: normal;
-  margin: 0;
-  padding-right: 5px; /* LTR */
-}
-.field-type-taxonomy-term-reference .field-label,
-.field-type-taxonomy-term-reference ul.links {
-  font-size: 0.8em;
-}
+
 .node-teaser .field-type-taxonomy-term-reference .field-label,
 .node-teaser .field-type-taxonomy-term-reference ul.links {
   font-size: 0.821em;

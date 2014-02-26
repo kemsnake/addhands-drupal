@@ -13,34 +13,6 @@ function feature_advert_config_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_advert_description|node|advert_zone_sell|form';
-  $field_group->group_name = 'group_advert_description';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'advert_zone_sell';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Описание',
-    'weight' => '0',
-    'children' => array(
-      0 => 'body',
-      1 => 'title',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-advert-description field-group-fieldset',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_advert_description|node|advert_zone_sell|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_advert_description|node|advert_house_rent|form';
   $field_group->group_name = 'group_advert_description';
   $field_group->entity_type = 'node';
@@ -97,6 +69,34 @@ function feature_advert_config_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_advert_description|node|advert_zone_sell|form';
+  $field_group->group_name = 'group_advert_description';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'advert_zone_sell';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Описание',
+    'weight' => '0',
+    'children' => array(
+      0 => 'body',
+      1 => 'title',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-advert-description field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_advert_description|node|advert_zone_sell|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_advert_type|node|advert_house_sell|form';
   $field_group->group_name = 'group_advert_type';
   $field_group->entity_type = 'node';
@@ -120,35 +120,6 @@ function feature_advert_config_field_group_info() {
     ),
   );
   $export['group_advert_type|node|advert_house_sell|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_details|node|advert_zone_sell|form';
-  $field_group->group_name = 'group_details';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'advert_zone_sell';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Детали',
-    'weight' => '2',
-    'children' => array(
-      0 => 'field_zone_details',
-      1 => 'field_about_advert',
-      2 => 'field_price',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-details field-group-fieldset',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_details|node|advert_zone_sell|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -213,31 +184,31 @@ function feature_advert_config_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_short_info|node|advert_zone_sell|form';
-  $field_group->group_name = 'group_short_info';
+  $field_group->identifier = 'group_details|node|advert_zone_sell|form';
+  $field_group->group_name = 'group_details';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'advert_zone_sell';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Краткая анкета',
-    'weight' => '1',
+    'label' => 'Детали',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_zone',
-      1 => 'field_zone_type',
-      2 => 'field_zone_documents',
+      0 => 'field_zone_details',
+      1 => 'field_about_advert',
+      2 => 'field_price',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-short-info field-group-fieldset',
+        'classes' => 'group-details field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_short_info|node|advert_zone_sell|form'] = $field_group;
+  $export['group_details|node|advert_zone_sell|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -306,6 +277,35 @@ function feature_advert_config_field_group_info() {
     ),
   );
   $export['group_short_info|node|advert_house_sell|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_short_info|node|advert_zone_sell|form';
+  $field_group->group_name = 'group_short_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'advert_zone_sell';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Краткая анкета',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_zone',
+      1 => 'field_zone_type',
+      2 => 'field_zone_documents',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-short-info field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_short_info|node|advert_zone_sell|form'] = $field_group;
 
   return $export;
 }
