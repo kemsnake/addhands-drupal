@@ -256,6 +256,7 @@ function feature_advert_config_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_map',
     'foreign keys' => array(),
+    'global_block_settings' => 2,
     'indexes' => array(
       'bbox' => array(
         0 => 'top',
