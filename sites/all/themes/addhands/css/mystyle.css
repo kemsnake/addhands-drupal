@@ -1513,11 +1513,6 @@ div.region-footer > div.block-menu > div.content > ul.menu > li.leaf > a:hover{
     height: 605px !important;
 }
 
-.field-content img{
-    position:relative !important;
-    left: 50% !important;
-    margin-left:-800px !important;
-}
 .views-slideshow-cycle-main-frame-row{
     margin: 0 !important;
     padding: 0 !important;

@@ -641,7 +641,6 @@ span.arrow.forward{
     background: none !important;
 }
 .gallery-thumbs .wrapper{
-
     width:624px !important;
 
 }
@@ -652,3 +651,12 @@ span.arrow.forward{
     margin: auto 0 !important;
 }
 /* end advert slider */
+.view-nearest-object .views-field-title ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.view-nearest-object .views-field-title ul li{
+    display: inline;
+    padding:0!important;
+}

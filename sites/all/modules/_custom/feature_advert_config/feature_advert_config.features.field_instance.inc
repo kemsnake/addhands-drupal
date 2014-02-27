@@ -357,6 +357,7 @@ function feature_advert_config_field_default_field_instances() {
           'map_auto_zooming' => 1,
           'map_center' => '0,0',
           'map_clusterize' => 0,
+          'map_object_preset' => '',
           'map_type' => 'yandex#map',
           'map_zoom' => 10,
         ),
@@ -388,6 +389,7 @@ function feature_advert_config_field_default_field_instances() {
       'module' => 'geofield_ymap',
       'settings' => array(
         'map_center' => '37.62221595263608,55.75378270800939',
+        'map_object_preset' => '',
         'map_object_types' => array(
           'line' => 0,
           'point' => 'point',
@@ -1060,6 +1062,7 @@ function feature_advert_config_field_default_field_instances() {
           'map_auto_zooming' => 1,
           'map_center' => '0,0',
           'map_clusterize' => 0,
+          'map_object_preset' => '',
           'map_type' => 'yandex#map',
           'map_zoom' => 1,
         ),
@@ -1091,6 +1094,7 @@ function feature_advert_config_field_default_field_instances() {
       'module' => 'geofield_ymap',
       'settings' => array(
         'map_center' => '37.62221595263608,55.75378270800939',
+        'map_object_preset' => '',
         'map_object_types' => array(
           'line' => 0,
           'point' => 'point',
@@ -1625,6 +1629,7 @@ function feature_advert_config_field_default_field_instances() {
           'map_auto_zooming' => 1,
           'map_center' => '0,0',
           'map_clusterize' => 0,
+          'map_object_preset' => '',
           'map_type' => 'yandex#map',
           'map_zoom' => 1,
         ),
@@ -1655,6 +1660,7 @@ function feature_advert_config_field_default_field_instances() {
       'module' => 'geofield_ymap',
       'settings' => array(
         'map_center' => '37.62221595263608,55.75378270800939',
+        'map_object_preset' => '',
         'map_object_types' => array(
           0 => 'point',
         ),

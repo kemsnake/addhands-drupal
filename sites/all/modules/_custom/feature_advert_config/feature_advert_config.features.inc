@@ -17,6 +17,13 @@ function feature_advert_config_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function feature_advert_config_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_image_default_styles().
  */
 function feature_advert_config_image_default_styles() {
@@ -85,7 +92,7 @@ function feature_advert_config_image_default_styles() {
         'name' => 'image_scale',
         'data' => array(
           'width' => '',
-          'height' => 367,
+          'height' => 467,
           'upscale' => 1,
         ),
         'weight' => 1,
