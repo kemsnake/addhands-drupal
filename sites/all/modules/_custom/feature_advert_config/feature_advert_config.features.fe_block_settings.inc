@@ -84,6 +84,42 @@ function feature_advert_config_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['custom_addhands-advert_updated'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'advert_updated',
+    'module' => 'custom_addhands',
+    'node_types' => array(
+      0 => 'advert_house_rent',
+      1 => 'advert_house_sell',
+      2 => 'advert_zone_sell',
+    ),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'addhands' => array(
+        'region' => 'sidebar_second',
+        'status' => 1,
+        'theme' => 'addhands',
+        'weight' => -29,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['custom_addhands-request_advert_info'] = array(
     'cache' => 1,
     'custom' => 0,
@@ -135,7 +171,7 @@ function feature_advert_config_default_fe_block_settings() {
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'addhands',
-        'weight' => 0,
+        'weight' => -26,
       ),
       'omega' => array(
         'region' => '',

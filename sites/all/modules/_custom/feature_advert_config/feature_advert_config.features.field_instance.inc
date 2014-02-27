@@ -1173,8 +1173,8 @@ function feature_advert_config_field_default_field_instances() {
         'settings' => array(
           'link_to_full' => 1,
           'link_to_full_style' => 0,
-          'linking_method' => 'show_full_link',
-          'modal' => 'none',
+          'linking_method' => 'onclick_full',
+          'modal' => 'colorbox',
           'slide_style' => 'advert-slider-big-image',
           'style' => 'Greenarrows',
           'thumb_style' => 'advert-slider-images',

@@ -25,6 +25,7 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[fe_block_settings][] = cck_blocks-field_map
 features[fe_block_settings][] = custom_addhands-advert_price
+features[fe_block_settings][] = custom_addhands-advert_updated
 features[fe_block_settings][] = custom_addhands-request_advert_info
 features[fe_block_settings][] = views-nearest_object-block
 features[features_api][] = api:2
