@@ -651,6 +651,8 @@ span.arrow.forward{
     margin: auto 0 !important;
 }
 /* end advert slider */
+
+/* nearest objects view block*/
 .view-nearest-object .views-field-title ul {
     list-style: none;
     padding-left: 0;
@@ -659,4 +661,14 @@ span.arrow.forward{
 .view-nearest-object .views-field-title ul li{
     display: inline;
     padding:0!important;
+}
+
+/* requestadvert-info form */
+#custom-addhands-request-advert-info-form>div {
+    margin-top: 20px;
+    //border: 1px solid lightgray;
+}
+#custom-addhands-request-advert-info-form label {
+    float: left;
+    width: 25%;
 }
