@@ -190,5 +190,73 @@ function feature_advert_config_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['views-nearest_object-block_1'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'nearest_object-block_1',
+    'module' => 'views',
+    'node_types' => array(
+      0 => 'advert_house_rent',
+    ),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'addhands' => array(
+        'region' => 'sidebar_second',
+        'status' => 1,
+        'theme' => 'addhands',
+        'weight' => 0,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['views-nearest_object-block_2'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'nearest_object-block_2',
+    'module' => 'views',
+    'node_types' => array(
+      0 => 'advert_zone_sell',
+    ),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'addhands' => array(
+        'region' => 'sidebar_second',
+        'status' => 1,
+        'theme' => 'addhands',
+        'weight' => 0,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   return $export;
 }

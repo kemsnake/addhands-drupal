@@ -157,11 +157,17 @@ function feature_advert_config_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'advert_house_sell' => 'advert_house_sell',
+    'advert_zone_sell' => 'advert_zone_sell',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Block - House sell */
+  $handler = $view->new_display('block', 'Block - House sell', 'block');
+
+  /* Display: Block - House rent */
+  $handler = $view->new_display('block', 'Block - House rent', 'block_1');
+
+  /* Display: Block - Zone Sell */
+  $handler = $view->new_display('block', 'Block - Zone Sell', 'block_2');
   $translatables['nearest_object'] = array(
     t('Master'),
     t('Объекты рядом'),
@@ -178,7 +184,9 @@ function feature_advert_config_views_default_views() {
 <br>
 [field_price]'),
     t('All'),
-    t('Block'),
+    t('Block - House sell'),
+    t('Block - House rent'),
+    t('Block - Zone Sell'),
   );
   $export['nearest_object'] = $view;
 
