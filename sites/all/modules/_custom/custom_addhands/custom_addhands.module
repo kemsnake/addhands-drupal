@@ -147,6 +147,14 @@ function custom_addhands_settings($form, $form_state){
     '#format' => $default_value_footer['format'],
   );
 
+  $request_advert_info_form_code = variable_get('request_advert_info_form_code', array('value' => '', 'format' => 'full_html'));
+  $form['request_advert_info_form_code'] = array(
+    '#type' => 'text_format',
+    '#title' => 'Код формы запроса информации об объявлении (форма 123contactform)',
+    '#default_value' => $request_advert_info_form_code['value'],
+    '#format' => 'full_html',
+  );
+
   $form['node_advert_types'] = array(
     '#type' => 'checkboxes',
     '#title' => 'Типы материалов для объявлений',
@@ -193,9 +201,8 @@ function custom_addhands_block_view($delta){
       }
       break;
     case 'request_advert_info':
-      //$node = node_load(arg(1));
-      $form = drupal_get_form('custom_addhands_request_advert_info_form', arg(1));
-      $output = drupal_render($form);
+      $request_advert_info_form_code = variable_get('request_advert_info_form_code', array('value' => '', 'format' => 'full_html'));
+      $output = $request_advert_info_form_code['value'];
       break;
     case 'footer_logo':
       $output = '<div class="f-logo-wrapper">' . theme('image', array('path' => theme_get_setting('ilogo'), 'attributes' => array('class'=>'f-logo'))) . '</div>';
@@ -373,6 +380,8 @@ function theme_multicolumn_options($element) {
   return $output;
 }
 
+/*
+Друпал-Форма запроса информации об объявлении
 function custom_addhands_request_advert_info_form($form, &$form_state, $nid){
   $form = array();
 
@@ -419,4 +428,4 @@ function custom_addhands_request_advert_info_form_submit($form, &$form_state){
   else {
     drupal_set_message('Запрашиваемое вами объявление не существует.');
   }
-}
+}*/

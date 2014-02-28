@@ -144,6 +144,7 @@ features[variable][] = node_preview_advert_zone_sell
 features[variable][] = node_submitted_advert_house_rent
 features[variable][] = node_submitted_advert_house_sell
 features[variable][] = node_submitted_advert_zone_sell
+features[variable][] = request_advert_info_form_code
 features[variable][] = save_continue_advert_house_rent
 features[variable][] = save_continue_advert_zone_sell
 features[views_view][] = nearest_object

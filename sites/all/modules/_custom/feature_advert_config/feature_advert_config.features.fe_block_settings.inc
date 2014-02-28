@@ -130,7 +130,7 @@ function feature_advert_config_default_fe_block_settings() {
       1 => 'advert_house_sell',
       2 => 'advert_zone_sell',
     ),
-    'pages' => '',
+    'pages' => 'node/add/*',
     'roles' => array(),
     'themes' => array(
       'addhands' => array(
