@@ -672,3 +672,18 @@ span.arrow.forward{
     float: left;
     width: 25%;
 }
+
+.field-name-field-details .field-item{
+    float:left;
+    width: 30%;
+    margin-right: 3%;
+}
+
+.field-name-field-details .field-item .active{
+    background: url("../images/active_16x16.png") no-repeat scroll 0 0 transparent;
+    padding-left:20px;
+}
+.field-name-field-details .field-item .inactive{
+    background: url("../images/inactive_16x16.png") no-repeat scroll 0 0 transparent;
+    padding-left:20px;
+}

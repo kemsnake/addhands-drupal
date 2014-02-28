@@ -263,6 +263,75 @@ function custom_addhands_node_view($node){
 }
 
 /**
+ * Implements hook_field_formatter_info().
+ */
+function custom_addhands_field_formatter_info() {
+  return array(
+    'custom_addhands_term_reference_multicolumn_link' => array(
+      'label' => t('Multicolumn Link'),
+      'field types' => array('taxonomy_term_reference'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function custom_addhands_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  // Terms whose tid is 'autocreate' do not exist
+  // yet and $item['taxonomy_term'] is not set. Theme such terms as
+  // just their name.
+  switch ($display['type']) {
+    case 'custom_addhands_term_reference_multicolumn_link':
+      foreach ($items as $delta => $item) {
+        $term = $item['taxonomy_term'];
+        $uri = entity_uri('taxonomy_term', $term);
+        $element[$delta] = array(
+          '#type' => 'link',
+          '#title' => $term->name,
+          '#href' => $uri['path'],
+          '#options' => $uri['options'],
+          '#attributes' =>  ($item['status'] == 'active') ? array('class' => array('active')) : array('class' => array('inactive')),
+        );
+      }
+      break;
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_prepare_view().
+ *
+ * This preloads all taxonomy terms for multiple loaded objects at once and
+ * unsets values for invalid terms that do not exist.
+ */
+function custom_addhands_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  $vocabulary = taxonomy_vocabulary_machine_name_load($field['settings']['allowed_values'][0]['vocabulary']);
+  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+  if ($terms) {
+    foreach ($entities as $id => $entity) {
+      $active_items = array();
+      foreach ($items[$id] as $item){
+        $active_items[] = $item['tid'];
+      }
+      $delta = 0;
+      foreach ($terms as $key => $term) {
+        $items[$id][$delta]['taxonomy_term'] = $term;
+        $items[$id][$delta]['tid'] = $term->tid;
+        if (in_array($term->tid, $active_items)) {
+          $items[$id][$delta]['status'] = 'active';
+        }
+        else {
+          $items[$id][$delta]['status'] = 'inactive';
+        }
+        ++$delta;
+      }
+    }
+  }
+}
+
+/**
  * Implementationof hook_form_alter()
  * Removes name field from registration form
  *

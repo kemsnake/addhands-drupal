@@ -221,9 +221,9 @@ function feature_advert_config_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'inline',
-        'module' => 'taxonomy',
+        'module' => 'custom_addhands',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'custom_addhands_term_reference_multicolumn_link',
         'weight' => 10,
       ),
       'teaser' => array(
@@ -972,9 +972,9 @@ function feature_advert_config_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'inline',
-        'module' => 'taxonomy',
+        'module' => 'custom_addhands',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'custom_addhands_term_reference_multicolumn_link',
         'weight' => 11,
       ),
       'teaser' => array(
@@ -1846,9 +1846,9 @@ function feature_advert_config_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'inline',
-        'module' => 'taxonomy',
+        'module' => 'custom_addhands',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'custom_addhands_term_reference_multicolumn_link',
         'weight' => 5,
       ),
       'teaser' => array(
