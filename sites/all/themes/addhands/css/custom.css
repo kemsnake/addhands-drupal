@@ -673,16 +673,19 @@ span.arrow.forward{
     width: 25%;
 }
 
+.field-name-field-zone-details .field-item,
 .field-name-field-details .field-item{
     float:left;
     width: 30%;
     margin-right: 3%;
 }
 
+.field-name-field-zone-details .field-item .active,
 .field-name-field-details .field-item .active{
     background: url("../images/active_16x16.png") no-repeat scroll 0 0 transparent;
     padding-left:20px;
 }
+.field-name-field-zone-details .field-item .inactive,
 .field-name-field-details .field-item .inactive{
     background: url("../images/inactive_16x16.png") no-repeat scroll 0 0 transparent;
     padding-left:20px;
