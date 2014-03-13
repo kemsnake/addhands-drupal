@@ -28,7 +28,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -79,7 +79,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -181,7 +181,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 4,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -220,11 +220,11 @@ function feature_advert_config_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'custom_addhands',
         'settings' => array(),
         'type' => 'custom_addhands_term_reference_multicolumn_link',
-        'weight' => 10,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -271,7 +271,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 12,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -314,7 +314,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -368,7 +368,7 @@ function feature_advert_config_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -425,7 +425,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -528,7 +528,7 @@ function feature_advert_config_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -580,7 +580,7 @@ function feature_advert_config_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 9,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -632,7 +632,7 @@ function feature_advert_config_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 8,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -683,7 +683,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -732,7 +732,7 @@ function feature_advert_config_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_decimal',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -743,7 +743,7 @@ function feature_advert_config_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_zone',
-    'label' => 'Площаль участка',
+    'label' => 'Участок',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -830,7 +830,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -881,7 +881,7 @@ function feature_advert_config_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_decimal',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -932,7 +932,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 6,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -953,7 +953,7 @@ function feature_advert_config_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 9,
     ),
   );
 
@@ -971,7 +971,7 @@ function feature_advert_config_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'custom_addhands',
         'settings' => array(),
         'type' => 'custom_addhands_term_reference_multicolumn_link',
@@ -1022,7 +1022,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 8,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1073,7 +1073,7 @@ function feature_advert_config_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1130,7 +1130,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1151,7 +1151,7 @@ function feature_advert_config_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1233,7 +1233,7 @@ function feature_advert_config_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1288,7 +1288,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1309,7 +1309,7 @@ function feature_advert_config_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -1336,7 +1336,7 @@ function feature_advert_config_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 12,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1361,7 +1361,7 @@ function feature_advert_config_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 10,
+      'weight' => 8,
     ),
   );
 
@@ -1388,7 +1388,7 @@ function feature_advert_config_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 13,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1439,7 +1439,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 7,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1460,7 +1460,7 @@ function feature_advert_config_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 
@@ -1488,7 +1488,7 @@ function feature_advert_config_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_decimal',
-        'weight' => 10,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1499,7 +1499,7 @@ function feature_advert_config_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_zone',
-    'label' => 'Площаль участка',
+    'label' => 'Участок',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -1513,7 +1513,7 @@ function feature_advert_config_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 8,
+      'weight' => 5,
     ),
   );
 
@@ -1586,7 +1586,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1640,7 +1640,7 @@ function feature_advert_config_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1750,7 +1750,7 @@ function feature_advert_config_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1802,7 +1802,7 @@ function feature_advert_config_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_decimal',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1813,7 +1813,7 @@ function feature_advert_config_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_zone',
-    'label' => 'Площаль участка',
+    'label' => 'Участок',
     'required' => 1,
     'settings' => array(
       'max' => '',
@@ -1845,11 +1845,11 @@ function feature_advert_config_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'custom_addhands',
         'settings' => array(),
         'type' => 'custom_addhands_term_reference_multicolumn_link',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1896,7 +1896,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1943,7 +1943,7 @@ function feature_advert_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1981,12 +1981,12 @@ function feature_advert_config_field_default_field_instances() {
   t('Описание должно быть длиной минимум 15 слов. Самые хорошие объявления состоят из 150 слов и более.');
   t('Отделка');
   t('Площадь');
-  t('Площаль участка');
   t('Стены');
   t('Текст объявления');
   t('Тип сооружения');
   t('Тип участка');
   t('Удобства');
+  t('Участок');
   t('Фотографии');
   t('Цена');
   t('Что получает арендатель');

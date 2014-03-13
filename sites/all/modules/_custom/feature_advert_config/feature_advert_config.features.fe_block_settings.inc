@@ -58,7 +58,7 @@ function feature_advert_config_default_fe_block_settings() {
       1 => 'advert_house_sell',
       2 => 'advert_zone_sell',
     ),
-    'pages' => '',
+    'pages' => 'node/*/edit',
     'roles' => array(),
     'themes' => array(
       'addhands' => array(
@@ -94,7 +94,7 @@ function feature_advert_config_default_fe_block_settings() {
       1 => 'advert_house_sell',
       2 => 'advert_zone_sell',
     ),
-    'pages' => '',
+    'pages' => 'node/*/edit',
     'roles' => array(),
     'themes' => array(
       'addhands' => array(
@@ -130,7 +130,8 @@ function feature_advert_config_default_fe_block_settings() {
       1 => 'advert_house_sell',
       2 => 'advert_zone_sell',
     ),
-    'pages' => 'node/add/*',
+    'pages' => 'node/add/*
+node/*/edit',
     'roles' => array(),
     'themes' => array(
       'addhands' => array(
@@ -164,7 +165,7 @@ function feature_advert_config_default_fe_block_settings() {
     'node_types' => array(
       0 => 'advert_house_sell',
     ),
-    'pages' => '',
+    'pages' => 'node/*/edit',
     'roles' => array(),
     'themes' => array(
       'addhands' => array(

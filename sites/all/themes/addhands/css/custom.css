@@ -673,20 +673,36 @@ span.arrow.forward{
     width: 25%;
 }
 
+/* advert node */
 .field-name-field-zone-details .field-item,
-.field-name-field-details .field-item{
+.field-name-field-details .field-item,
+.field-name-field-comfort .field-item {
     float:left;
     width: 30%;
     margin-right: 3%;
 }
 
 .field-name-field-zone-details .field-item .active,
-.field-name-field-details .field-item .active{
+.field-name-field-details .field-item .active,
+.field-name-field-comfort .field-item .active{
     background: url("../images/active_16x16.png") no-repeat scroll 0 0 transparent;
     padding-left:20px;
 }
 .field-name-field-zone-details .field-item .inactive,
-.field-name-field-details .field-item .inactive{
+.field-name-field-details .field-item .inactive,
+.field-name-field-comfort .field-item .inactive{
     background: url("../images/inactive_16x16.png") no-repeat scroll 0 0 transparent;
     padding-left:20px;
 }
+
+.field-name-field-zone-details,
+.field-name-field-details,
+.field-name-field-comfort{
+    overflow: hidden;
+}
+
+.group-short-info .field {
+    width: 33%;
+    float: left;
+}
+/* end advert node */

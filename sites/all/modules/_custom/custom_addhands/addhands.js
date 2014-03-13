@@ -42,4 +42,18 @@
             });
         }
     };
+
+    Drupal.behaviors.YmapCustom = {
+        attach: function (context) {
+            map = Drupal.geofieldYmap;
+            console.log(map.getB);
+            // Область Москвы и Московской области
+            var moscowBounds = new ymaps.GeoBounds(
+                new ymaps.GeoPoint(37.13268871914181, 55.55945544545429),
+                new ymaps.GeoPoint(38.085747336675574, 55.946698202860325)
+            );
+            map.addOverlay(new Drupal.geofieldYmap.Geocoder("победы", {boundedBy : moscowBounds, strictBounds : true, results : 100}));
+        }
+    }
+
 })(jQuery);

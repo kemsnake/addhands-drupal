@@ -24,35 +24,22 @@ function feature_user_management_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Мои объявления';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'ещё';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Применить';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Сбросить';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Сортировать по';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'По возрастанию';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'По убыванию';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Элементов на страницу';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Все -';
-  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Пропустить';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '« первая';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ предыдущая';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'следующая ›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Поведение при отсутствии результатов: Глобальный: Нефильтруемый текст */
+  /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['empty']['area_text_custom']['content'] = 'Объявления не найдены. Можете добавить объявления на <a href="/user/!1/create_advert"> этой странице.</a>';
   $handler->display->display_options['empty']['area_text_custom']['tokenize'] = TRUE;
-  /* Поле: Содержимое: Фотографии */
+  /* Field: Content: Фотографии */
   $handler->display->display_options['fields']['field_photo']['id'] = 'field_photo';
   $handler->display->display_options['fields']['field_photo']['table'] = 'field_data_field_photo';
   $handler->display->display_options['fields']['field_photo']['field'] = 'field_photo';
@@ -64,21 +51,22 @@ function feature_user_management_views_default_views() {
   );
   $handler->display->display_options['fields']['field_photo']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_photo']['delta_offset'] = '0';
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Название';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Поле: Содержимое: Текст объявления */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'Текст объявления';
   $handler->display->display_options['fields']['body']['alter']['max_length'] = '200';
   $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['html'] = TRUE;
-  /* Поле: Содержимое: Цена */
+  /* Field: Content: Цена */
   $handler->display->display_options['fields']['field_price']['id'] = 'field_price';
   $handler->display->display_options['fields']['field_price']['table'] = 'field_data_field_price';
   $handler->display->display_options['fields']['field_price']['field'] = 'field_price';
@@ -86,18 +74,18 @@ function feature_user_management_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Тип */
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Контекстный фильтр: Содержимое: UID Автора */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -115,7 +103,7 @@ if ($argument == $user->uid || user_access(\'administer users\')) {
 return TRUE;
 }
 return FALSE;';
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -131,19 +119,19 @@ return FALSE;';
   $translatables['my_adverts'] = array(
     t('Master'),
     t('Мои объявления'),
-    t('ещё'),
-    t('Применить'),
-    t('Сбросить'),
-    t('Сортировать по'),
-    t('По возрастанию'),
-    t('По убыванию'),
-    t('Элементов на страницу'),
-    t('- Все -'),
-    t('Пропустить'),
-    t('« первая'),
-    t('‹ предыдущая'),
-    t('следующая ›'),
-    t('последняя »'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
     t('Объявления не найдены. Можете добавить объявления на <a href="/user/!1/create_advert"> этой странице.</a>'),
     t('Фотографии'),
     t('Название'),

@@ -488,6 +488,7 @@ function feature_advert_config_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_zone',
     'foreign keys' => array(),
+    'global_block_settings' => 1,
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',

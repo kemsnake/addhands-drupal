@@ -6,7 +6,6 @@ dependencies[] = feature_user_management
 dependencies[] = features
 dependencies[] = filter
 dependencies[] = media
-dependencies[] = node
 dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = views

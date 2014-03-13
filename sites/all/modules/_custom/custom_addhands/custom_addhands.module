@@ -70,6 +70,13 @@ function custom_addhands_menu(){
     'type' => MENU_CALLBACK,
   );
 
+  $items['test-search'] = array(
+    'title' => 'test search',
+    'page callback' => 'advert_search_callback',
+    'page arguments' => array(1),
+    'access arguments' => array('use search'),
+  );
+
   return $items;
 }
 
@@ -191,7 +198,7 @@ function custom_addhands_block_view($delta){
       if (isset($node->field_price['und'][0]['value'])) {
         $output = 'Цена: ' . number_format($node->field_price['und'][0]['value'],0,',', ' ') . ' рублей  ';
 
-        $output .= l('Заказать', current_path(), array('fragment' => 'edit-user-name'));
+        $output .= l('Заказать', current_path(), array('fragment' => 'row1'));
       }
       break;
     case 'advert_updated':
@@ -332,6 +339,17 @@ function custom_addhands_field_formatter_prepare_view($entity_type, $entities, $
 }
 
 /**
+ * Implements hook_module_implements_alter().
+ */
+function custom_addhands_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'form_alter') {
+    $my_hook_implementation = $implementations['custom_addhands'];
+    unset($implementations['custom_addhands']);
+    $implementations['custom_addhands'] = $my_hook_implementation;
+  }
+}
+
+/**
  * Implementationof hook_form_alter()
  * Removes name field from registration form
  *
@@ -341,6 +359,12 @@ function custom_addhands_field_formatter_prepare_view($entity_type, $entities, $
  */
 function custom_addhands_form_alter(&$form, &$form_state, $form_id)
 {
+
+  if ($form_id == 'user_profile_form') {
+    if (!user_access('administer users')){
+      unset($form['locale']);
+    }
+  }
   if ($form_id == 'user_register_form') {
     drupal_add_js(drupal_get_path('module', 'custom_addhands') . '/addhands.js');
     if (isset($form['account']) && is_array($form['account'])) {
@@ -361,7 +385,9 @@ function custom_addhands_form_alter(&$form, &$form_state, $form_id)
   }
   else if (in_array($form_id, array('advert_house_rent_node_form', 'advert_house_sell_node_form', 'advert_zone_sell_node_form'))) {
     //выводим чекбоксы деталей объявления в 3 колонки
+
     if (isset($form['field_comfort']['und']['#type']) && $form['field_comfort']['und']['#type'] == 'checkboxes'){
+
       $form['field_comfort']['und']['#theme'] = array('multicolumn_options');
       $form['field_comfort']['und']['#columns'] = 3;
       $form['field_comfort']['und']['#title'] = '';
@@ -447,6 +473,43 @@ function theme_multicolumn_options($element) {
   $output .= '</div>';
 
   return $output;
+}
+
+function advert_search_callback($advert_type){
+
+  /*$node = node_load(31);
+  $map[] = array(
+    'type' => 'Point',
+    'coordinates' => $node->field_map['und'][0]['lon'] . ',' . $node->field_map['und'][0]['lat'],
+  );
+  $node = node_load(29);
+  $map[] = array(
+    'type' => 'Point',
+    'coordinates' => $node->field_map['und'][0]['lon'] . ',' . $node->field_map['und'][0]['lat'],
+  );
+  $map = drupal_json_encode($map);
+  dsm($map);
+
+  $form['location'] = array(
+    '#type' => 'geofield_ymap',
+    '#title' => 'Location',
+    '#description' => 'Select control and click to map for add object on map. Double click on object to remove it.',
+    '#map_multiple' => TRUE,
+    '#map_center' => array(55.733835, 37.588227),
+    '#map_zoom' => 12,
+    '#map_auto_centering' => TRUE,
+    '#map_object_types' => array('point', 'line', 'polygon'),
+    '#default_value' => '',
+    //'#map_objects' => '{"type":"Point","coordinates":[37.62,55.75]}', // GeoJSON, optionaly
+    '#map_objects' => $map,
+  );
+
+  return drupal_render($form);*/
+  drupal_add_js(drupal_get_path('module', 'custom_addhands') . '/addhands.js');
+  $view = views_get_view('advert_search');
+  $view->set_arguments(array('29,31'));
+  return  $view->render();
+
 }
 
 /*
