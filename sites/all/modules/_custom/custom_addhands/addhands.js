@@ -43,7 +43,7 @@
         }
     };
 
-    Drupal.behaviors.YmapCustom = {
+    /*Drupal.behaviors.YmapCustom = {
         attach: function (context) {
             map = Drupal.geofieldYmap;
             console.log(map.getB);
@@ -54,6 +54,6 @@
             );
             map.addOverlay(new Drupal.geofieldYmap.Geocoder("победы", {boundedBy : moscowBounds, strictBounds : true, results : 100}));
         }
-    }
+    }*/
 
 })(jQuery);
