@@ -1520,6 +1520,12 @@ div.region-footer > div.block-menu > div.content > ul.menu > li.leaf > a:hover{
     overflow: hidden !important;
 }
 
+.views-slideshow-cycle-main-frame-row .field-content img{
+    position:relative !important;
+    left: 50% !important;
+    margin-left:-800px !important;
+}
+
 #views_slideshow_controls_text_pause_frontpage_slideshow-block{
     display: none;
 }
