@@ -77,6 +77,13 @@ function custom_addhands_menu(){
     'access arguments' => array('use search'),
   );
 
+  $items['reload-search-results/%/%/%/%'] = array(
+    'title' => 'reload_search_results',
+    'page callback' => 'reload_search_results',
+    'page arguments' => array(1,2,3,4),
+    'access arguments' => array('use search'),
+  );
+
   return $items;
 }
 
@@ -507,9 +514,54 @@ function advert_search_callback($advert_type){
   return drupal_render($form);*/
   drupal_add_js(drupal_get_path('module', 'custom_addhands') . '/addhands.js');
   $view = views_get_view('advert_search');
-  $view->set_arguments(array('29,31'));
-  return  $view->render();
+  $view->set_display('page_1');
+  $view->pre_execute();
+  $view->execute();
+  return  $view->render('page_1');
 
+}
+
+/*
+ * Фильтруем объявления в поиске при изменении видимой области карты
+ */
+function reload_search_results($left, $top, $right, $bottom){
+  $view = views_get_view('advert_search');
+  $display_id = 'block_1';
+  // Устанавливаем значения фильтров при изменении видимой области карты
+  $view->set_display($display_id);
+  $filter = $view->get_item($display_id, 'filter', 'field_map_lon');
+  $filter['value']['min'] = $left;
+  $filter['value']['max'] = $right;
+  $view->set_item($display_id, 'filter', 'field_map_lon', $filter);
+  $filter = $view->get_item($display_id, 'filter', 'field_map_lat');
+  $filter['value']['min'] = $top;
+  $filter['value']['max'] = $bottom;
+  $view->set_item($display_id, 'filter', 'field_map_lat', $filter);
+  // Подготовливаем и рендерим вью
+  $view->pre_execute();
+  $block_html = $view->render($display_id);
+  // возвращаем хтмл в js для замены содержимого блока
+  $result['block_html'] = $block_html;
+//dsm($view);
+  $adverts = array();
+  foreach ($view->result as $row) {
+    $coords = array();
+    $advert = array();
+    $coords[] = $row->field_field_map[0]['raw']['lon'];
+    $coords[] = $row->field_field_map[0]['raw']['lat'];
+    $advert['coords'] = $coords;
+    $advert['baloon'] = 'test';
+    $adverts[] = $advert;
+  }
+  /*$display_id = 'page_1';
+  $view->set_display($display_id);
+  $view->set_arguments(array('29,31'));
+  $view->pre_execute();
+  $results = views_get_view_result('advert_search', 'page_1', array('29,31'));
+  $map_html = $view->render($display_id);*/
+  // возвращаем хтмл в js для замены содержимого блока
+  $result['adverts'] = $adverts;
+  drupal_json_output($result);
 }
 
 /*
