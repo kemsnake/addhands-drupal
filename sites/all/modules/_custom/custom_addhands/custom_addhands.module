@@ -77,11 +77,12 @@ function custom_addhands_menu(){
     'access arguments' => array('use search'),
   );
 
-  $items['reload-search-results/%/%/%/%/%'] = array(
+  $items['reload-search-results/%/%/%/%/%/%/%'] = array(
     'title' => 'reload_search_results',
     'page callback' => 'reload_search_results',
-    'page arguments' => array(1,2,3,4,5),
+    'page arguments' => array(1,2,3,4,5,6,7),
     'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -509,7 +510,7 @@ function advert_search_callback($advert_type){
 /*
  * Фильтруем объявления в поиске при изменении видимой области карты
  */
-function reload_search_results($left, $top, $right, $bottom, $type = NULL){
+function reload_search_results($left, $top, $right, $bottom, $type = NULL, $min_price = 0, $max_price = 999999999){
   $view = views_get_view('advert_search');
   $display_id = 'block_1';
   // Устанавливаем значения фильтров при изменении видимой области карты
@@ -522,6 +523,12 @@ function reload_search_results($left, $top, $right, $bottom, $type = NULL){
   $filter['value']['min'] = $top;
   $filter['value']['max'] = $bottom;
   $view->set_item($display_id, 'filter', 'field_map_lat', $filter);
+
+//dsm(drupal_parse_url($_GET['q']));
+  $filter = $view->get_item($display_id, 'filter', 'field_price_value');
+  $filter['value']['min'] = $min_price;
+  $filter['value']['max'] = $max_price;
+  $view->set_item($display_id, 'filter', 'field_price_value', $filter);
 
   if (isset($type)){
     $view->set_arguments(array($type));

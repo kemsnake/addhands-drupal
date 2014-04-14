@@ -57,9 +57,12 @@
                     var top  = bounds[0][1];
                     var right = bounds[1][0];
                     var bottom = bounds[1][1];
-                    var type = window.location.search;
-                    type = type.replace('?type=', '');
-                    var update_url = '/reload-search-results/'+left+'/'+top+'/'+right+'/'+bottom+'/'+type;
+                    var type = getQueryVariable('type');
+                    var min_price = getQueryVariable('field_price_value%5Bmin%5D');
+                    if (min_price == false) min_price = 0;
+                    var max_price = getQueryVariable('field_price_value%5Bmax%5D');
+                    if (max_price == false) max_price = 999999999;
+                    var update_url = '/reload-search-results/'+left+'/'+top+'/'+right+'/'+bottom+'/'+type+'/'+min_price+'/'+max_price;
                     jQuery.ajax({
                         url: update_url,
                         type: 'POST',
@@ -88,7 +91,6 @@
                 map.setZoom(9);
                 $('.view-advert-search .pager li a').live('click', function(e){
                     e.preventDefault();
-                    console.log(this)
                     jQuery.ajax({
                         url: this.href,
                         type: 'POST',
@@ -114,6 +116,17 @@
                         }
                     });
                 });
+
+                function getQueryVariable(variable)
+                {
+                    var query = window.location.search.substring(1);
+                    var vars = query.split("&");
+                    for (var i=0;i<vars.length;i++) {
+                        var pair = vars[i].split("=");
+                        if(pair[0] == variable){return pair[1];}
+                    }
+                    return(false);
+                }
             });
 
         }
