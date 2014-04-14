@@ -23,12 +23,17 @@ function feature_advert_config_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'ещё';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Поиск';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Сбросить';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Сортировать по';
   $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'По возрастанию';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'По убыванию';
   $handler->display->display_options['exposed_form']['options']['bef'] = array(
     'general' => array(
       'allow_secondary' => 0,
@@ -56,7 +61,7 @@ function feature_advert_config_views_default_views() {
       'bef_format' => 'bef_slider',
       'slider_options' => array(
         'bef_slider_min' => '0',
-        'bef_slider_max' => '9999999',
+        'bef_slider_max' => '999999999',
         'bef_slider_step' => '1',
         'bef_slider_animate' => '',
         'bef_slider_orientation' => 'horizontal',
@@ -83,21 +88,21 @@ function feature_advert_config_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* No results behavior: Global: Text area */
+  /* Поведение при отсутствии результатов: Глобальный: Текстовое поле */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'По данным критериям ничего не найдено.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Field: Content: Title */
+  /* Поле: Содержимое: Заголовок */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Фотографии */
+  /* Поле: Содержимое: Фотографии */
   $handler->display->display_options['fields']['field_photo']['id'] = 'field_photo';
   $handler->display->display_options['fields']['field_photo']['table'] = 'field_data_field_photo';
   $handler->display->display_options['fields']['field_photo']['field'] = 'field_photo';
@@ -110,7 +115,7 @@ function feature_advert_config_views_default_views() {
   );
   $handler->display->display_options['fields']['field_photo']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_photo']['delta_offset'] = '0';
-  /* Field: Content: Цена */
+  /* Поле: Содержимое: Цена */
   $handler->display->display_options['fields']['field_price']['id'] = 'field_price';
   $handler->display->display_options['fields']['field_price']['table'] = 'field_data_field_price';
   $handler->display->display_options['fields']['field_price']['field'] = 'field_price';
@@ -121,7 +126,7 @@ function feature_advert_config_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: Карта */
+  /* Поле: Содержимое: Карта */
   $handler->display->display_options['fields']['field_map']['id'] = 'field_map';
   $handler->display->display_options['fields']['field_map']['table'] = 'field_data_field_map';
   $handler->display->display_options['fields']['field_map']['field'] = 'field_map';
@@ -134,19 +139,19 @@ function feature_advert_config_views_default_views() {
     'format' => 'decimal_degrees',
     'labels' => 1,
   );
-  /* Sort criterion: Content: Post date */
+  /* Критерий сортировки: Содержимое: Дата публикации */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Критерий фильтра: Содержимое: Опубликовано */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Критерий фильтра: Содержимое: Тип */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -167,13 +172,13 @@ function feature_advert_config_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
-  /* Filter criterion: Content: Цена (field_price) */
+  /* Критерий фильтра: Содержимое: Цена (field_price) */
   $handler->display->display_options['filters']['field_price_value']['id'] = 'field_price_value';
   $handler->display->display_options['filters']['field_price_value']['table'] = 'field_data_field_price';
   $handler->display->display_options['filters']['field_price_value']['field'] = 'field_price_value';
   $handler->display->display_options['filters']['field_price_value']['operator'] = 'between';
   $handler->display->display_options['filters']['field_price_value']['value']['min'] = '0';
-  $handler->display->display_options['filters']['field_price_value']['value']['max'] = '9999999';
+  $handler->display->display_options['filters']['field_price_value']['value']['max'] = '999999999';
   $handler->display->display_options['filters']['field_price_value']['group'] = 1;
   $handler->display->display_options['filters']['field_price_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_price_value']['expose']['operator_id'] = 'field_price_value_op';
@@ -204,14 +209,14 @@ function feature_advert_config_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
+  /* Поле: Содержимое: Заголовок */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Фотографии */
+  /* Поле: Содержимое: Фотографии */
   $handler->display->display_options['fields']['field_photo']['id'] = 'field_photo';
   $handler->display->display_options['fields']['field_photo']['table'] = 'field_data_field_photo';
   $handler->display->display_options['fields']['field_photo']['field'] = 'field_photo';
@@ -224,7 +229,7 @@ function feature_advert_config_views_default_views() {
   );
   $handler->display->display_options['fields']['field_photo']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_photo']['delta_offset'] = '0';
-  /* Field: Content: Цена */
+  /* Поле: Содержимое: Цена */
   $handler->display->display_options['fields']['field_price']['id'] = 'field_price';
   $handler->display->display_options['fields']['field_price']['table'] = 'field_data_field_price';
   $handler->display->display_options['fields']['field_price']['field'] = 'field_price';
@@ -235,7 +240,7 @@ function feature_advert_config_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: Карта */
+  /* Поле: Содержимое: Карта */
   $handler->display->display_options['fields']['field_map']['id'] = 'field_map';
   $handler->display->display_options['fields']['field_map']['table'] = 'field_data_field_map';
   $handler->display->display_options['fields']['field_map']['field'] = 'field_map';
@@ -251,10 +256,11 @@ function feature_advert_config_views_default_views() {
     'map_object_preset' => '',
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Nid */
+  /* Контекстный фильтр: Содержимое: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['exception']['title'] = 'Все';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
@@ -270,15 +276,22 @@ function feature_advert_config_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '2';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Элементов на страницу';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Все -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Пропустить';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« первая';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ предыдущая';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'следующая ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
+  /* Поле: Содержимое: Заголовок */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Фотографии */
+  /* Поле: Содержимое: Фотографии */
   $handler->display->display_options['fields']['field_photo']['id'] = 'field_photo';
   $handler->display->display_options['fields']['field_photo']['table'] = 'field_data_field_photo';
   $handler->display->display_options['fields']['field_photo']['field'] = 'field_photo';
@@ -291,7 +304,7 @@ function feature_advert_config_views_default_views() {
   );
   $handler->display->display_options['fields']['field_photo']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_photo']['delta_offset'] = '0';
-  /* Field: Content: Цена */
+  /* Поле: Содержимое: Цена */
   $handler->display->display_options['fields']['field_price']['id'] = 'field_price';
   $handler->display->display_options['fields']['field_price']['table'] = 'field_data_field_price';
   $handler->display->display_options['fields']['field_price']['field'] = 'field_price';
@@ -302,7 +315,7 @@ function feature_advert_config_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: Карта */
+  /* Поле: Содержимое: Карта */
   $handler->display->display_options['fields']['field_map']['id'] = 'field_map';
   $handler->display->display_options['fields']['field_map']['table'] = 'field_data_field_map';
   $handler->display->display_options['fields']['field_map']['field'] = 'field_map';
@@ -317,11 +330,12 @@ function feature_advert_config_views_default_views() {
     'labels' => 1,
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Type */
+  /* Контекстный фильтр: Содержимое: Тип */
   $handler->display->display_options['arguments']['type']['id'] = 'type';
   $handler->display->display_options['arguments']['type']['table'] = 'node';
   $handler->display->display_options['arguments']['type']['field'] = 'type';
   $handler->display->display_options['arguments']['type']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['type']['exception']['title'] = 'Все';
   $handler->display->display_options['arguments']['type']['default_argument_type'] = 'php';
   $handler->display->display_options['arguments']['type']['default_argument_options']['code'] = 'if (isset($_GET[\'type\'])) return $_GET[\'type\'];
 
@@ -332,20 +346,20 @@ return \'advert_house_sell\';';
   $handler->display->display_options['arguments']['type']['limit'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Критерий фильтра: Содержимое: Опубликовано */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Цена (field_price) */
+  /* Критерий фильтра: Содержимое: Цена (field_price) */
   $handler->display->display_options['filters']['field_price_value']['id'] = 'field_price_value';
   $handler->display->display_options['filters']['field_price_value']['table'] = 'field_data_field_price';
   $handler->display->display_options['filters']['field_price_value']['field'] = 'field_price_value';
   $handler->display->display_options['filters']['field_price_value']['operator'] = 'between';
   $handler->display->display_options['filters']['field_price_value']['value']['min'] = '0';
-  $handler->display->display_options['filters']['field_price_value']['value']['max'] = '9999999';
+  $handler->display->display_options['filters']['field_price_value']['value']['max'] = '999999999';
   $handler->display->display_options['filters']['field_price_value']['group'] = 1;
   $handler->display->display_options['filters']['field_price_value']['expose']['operator_id'] = 'field_price_value_op';
   $handler->display->display_options['filters']['field_price_value']['expose']['label'] = 'Цена';
@@ -356,39 +370,39 @@ return \'advert_house_sell\';';
     1 => 0,
     3 => 0,
   );
-  /* Filter criterion: Content: Карта (field_map:lat) */
+  /* Критерий фильтра: Содержимое: Карта (field_map:lat) */
   $handler->display->display_options['filters']['field_map_lat']['id'] = 'field_map_lat';
   $handler->display->display_options['filters']['field_map_lat']['table'] = 'field_data_field_map';
   $handler->display->display_options['filters']['field_map_lat']['field'] = 'field_map_lat';
   $handler->display->display_options['filters']['field_map_lat']['operator'] = 'between';
-  /* Filter criterion: Content: Карта (field_map:lon) */
+  /* Критерий фильтра: Содержимое: Карта (field_map:lon) */
   $handler->display->display_options['filters']['field_map_lon']['id'] = 'field_map_lon';
   $handler->display->display_options['filters']['field_map_lon']['table'] = 'field_data_field_map';
   $handler->display->display_options['filters']['field_map_lon']['field'] = 'field_map_lon';
   $handler->display->display_options['filters']['field_map_lon']['operator'] = 'between';
   $translatables['advert_search'] = array(
     t('Master'),
-    t('more'),
+    t('ещё'),
     t('Поиск'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('Сбросить'),
+    t('Сортировать по'),
+    t('По возрастанию'),
+    t('По убыванию'),
     t('Select any filter and click on Apply to see results'),
     t('По данным критериям ничего не найдено.'),
     t('Type'),
     t('Цена'),
     t('Page'),
     t('Карта'),
-    t('All'),
+    t('Все'),
     t('Block'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('Элементов на страницу'),
+    t('- Все -'),
+    t('Пропустить'),
+    t('« первая'),
+    t('‹ предыдущая'),
+    t('следующая ›'),
+    t('последняя »'),
   );
   $export['advert_search'] = $view;
 
