@@ -706,3 +706,70 @@ span.arrow.forward{
     float: left;
 }
 /* end advert node */
+
+/* advert search. Map, filters and results */
+.ymaps-balloon__content {
+    padding: 1px!important;
+    text-align: justify;
+    background: #fff;
+    font: 13px/20px Arial,sans-serif;
+}
+
+.ymaps-balloon__close {
+    top: -7px!important;
+    right: -7px!important;
+    background: white;
+    border-radius: 18px;
+    -moz-border-radius: 18px;
+    -webkit-border-radius: 18px;
+}
+.ymaps-balloon__layout {
+    overflow: visible!important;
+}
+.ymaps-balloon__close+.ymaps-balloon__content {
+    margin-right: 0!important;
+}
+
+.ymaps-balloon__close-button {
+    width: 20px!important;
+    height: 20px!important;
+    margin-right: 0!important;
+}
+.ymaps-balloon-content__body {
+    text-align: center;
+    float: left;
+    width: 100%;
+    max-width: 100px;
+}
+.ymaps-balloon-content__header {
+    margin: 0!important;
+}
+
+#views-exposed-form-advert-search-page-1 #edit-field-price-value-wrapper {
+    width: 100%;
+}
+
+#views-exposed-form-advert-search-page-1 .form-type-textfield label{
+    float: left;
+}
+#views-exposed-form-advert-search-page-1 .form-type-textfield {
+    float: left;
+}
+#views-exposed-form-advert-search-page-1 .bef-slider {
+    clear: both;
+    float: left;
+    width: 100%;
+}
+
+#views-exposed-form-advert-search-page-1 #edit-field-price-value-wrapper label{
+    float: left;
+    margin-right:5px;
+    margin-left:3px;
+    font-size: 1em;
+    margin-top:3px;
+}
+
+.form-type-bef-link.selected {
+    font-weight: bold;
+}
+/* end advert search */

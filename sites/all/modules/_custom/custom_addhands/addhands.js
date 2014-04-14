@@ -46,8 +46,10 @@
     Drupal.behaviors.YmapCustom = {
         attach: function (context) {
 
+            if ( typeof ymaps == "undefined") return;
             ymaps.ready(function () {
                 var map = Drupal.geofieldYmap.data['geofield-ymap-advert-search-page-1-map']['map'];
+                // перерисовываем объекты на карте на основе видимой границы карты
                 map.events.add('boundschange', function (event) {
                     // фильтруем блок с объявлениями на основе видимой границы карты
                     var bounds = event.originalEvent.newBounds;
@@ -55,8 +57,9 @@
                     var top  = bounds[0][1];
                     var right = bounds[1][0];
                     var bottom = bounds[1][1];
-                    var update_url = '/reload-search-results/'+left+'/'+top+'/'+right+'/'+bottom;
-                    console.log(update_url);
+                    var type = window.location.search;
+                    type = type.replace('?type=', '');
+                    var update_url = '/reload-search-results/'+left+'/'+top+'/'+right+'/'+bottom+'/'+type;
                     jQuery.ajax({
                         url: update_url,
                         type: 'POST',
@@ -65,57 +68,61 @@
                             var jobj = jQuery.parseJSON(data);
                             jQuery('#block-views-advert-search-block-1 .content').html(jobj.block_html);
                             var adverts = jobj.adverts;
-                            //map.geoObjects.re
+                            // Удаляем все объявления с карты
+                            map.geoObjects.removeAll();
                             for (var i = 0; i < adverts.length; i++) {
                                 var advert = adverts[i];
-
-                                var balloon = new ymaps.Balloon(map);
-                                balloon.options.setParent(map.options);
-                                balloon.setPosition(advert.coords);
-                                balloon.contentLayout = 'sdgsdfg';
                                 // Создает метку в центре Москвы
                                 var placemark = new ymaps.Placemark(advert.coords, {
                                     // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
-                                    balloonContentHeader: "Балун метки",
-                                    balloonContentBody: "Содержимое <em>балуна</em> метки",
-                                    balloonContentFooter: "Подвал",
-                                    hintContent: "Хинт метки"
+                                    balloonContentHeader: advert.baloon.img,
+                                    balloonContentBody: advert.baloon.title,
+                                    hintContent: advert.baloon.hint
                                 });
-                                console.log(map.geoObjects);
-                                /*placemark.name = "Москва";
-                                placemark.description = "Столица Российской Федерации";*/
-                                //placemark.baloon = balloon;
-                                // Добавляет метку на карту
                                 map.geoObjects.add(placemark);
-                                ymaps.geoQuery(placemarks).searchIntersect(map).each(function(pm) {
-                                        map.geoObjects.remove(pm);
-                                });
-
                             }
 
                         }
                     });
+                });
+                map.setZoom(9);
+                $('.view-advert-search .pager li a').live('click', function(e){
+                    e.preventDefault();
+                    console.log(this)
+                    jQuery.ajax({
+                        url: this.href,
+                        type: 'POST',
+                        dataType: 'application/json',
+                        success: function(data){
+                            var jobj = jQuery.parseJSON(data);
+                            jQuery('#block-views-advert-search-block-1 .content').html(jobj.block_html);
+                            var adverts = jobj.adverts;
+                            // Удаляем все объявления с карты
+                            map.geoObjects.removeAll();
+                            for (var i = 0; i < adverts.length; i++) {
+                                var advert = adverts[i];
+                                // Создает метку в центре Москвы
+                                var placemark = new ymaps.Placemark(advert.coords, {
+                                    // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
+                                    balloonContentHeader: advert.baloon.img,
+                                    balloonContentBody: advert.baloon.title,
+                                    hintContent: advert.baloon.hint
+                                });
+                                map.geoObjects.add(placemark);
+                            }
 
-                    // перерисовываем объекты на карте на основе видимой границы карты
-
+                        }
+                    });
                 });
             });
 
-            function resizeMap(){
+        }
+    }
+    Drupal.behaviors.ajaxPager = {
+        attach: function (context) {
 
-                console.log(map.getBounds());
-                map.setBounds([37.13268871914181, 55.55945544545429],[38.085747336675574, 55.946698202860325]);
-                map.ZoomRangeChange;
-            }
 
-            //console.log(map.getBounds());
-            // Область Москвы и Московской области
-            //var ym = window.ymaps;
-            /*map.setBounds(
-                [38, 55],
-                [38, 55]
-            );*/
-            //map.addOverlay(new Drupal.geofieldYmap.Geocoder("победы", {boundedBy : moscowBounds, strictBounds : true, results : 1}));
+
         }
     }
 

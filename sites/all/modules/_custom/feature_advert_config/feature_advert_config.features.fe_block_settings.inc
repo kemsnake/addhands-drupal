@@ -29,7 +29,7 @@ function feature_advert_config_default_fe_block_settings() {
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'addhands',
-        'weight' => -27,
+        'weight' => -29,
       ),
       'omega' => array(
         'region' => '',
@@ -65,7 +65,7 @@ function feature_advert_config_default_fe_block_settings() {
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'addhands',
-        'weight' => -28,
+        'weight' => -30,
       ),
       'omega' => array(
         'region' => '',
@@ -101,7 +101,39 @@ function feature_advert_config_default_fe_block_settings() {
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'addhands',
-        'weight' => -29,
+        'weight' => -31,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['custom_addhands-footer_logo'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'footer_logo',
+    'module' => 'custom_addhands',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'addhands' => array(
+        'region' => 'footer',
+        'status' => 1,
+        'theme' => 'addhands',
+        'weight' => -12,
       ),
       'omega' => array(
         'region' => '',
@@ -157,6 +189,205 @@ node/*/edit',
     'visibility' => 0,
   );
 
+  $export['custom_addhands-top_banner'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'top_banner',
+    'module' => 'custom_addhands',
+    'node_types' => array(
+      0 => 'page',
+      1 => 'webform',
+    ),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'addhands' => array(
+        'region' => 'branding',
+        'status' => 1,
+        'theme' => 'addhands',
+        'weight' => -13,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
+  $export['custom_addhands-user_header_dropdown_menu'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'user_header_dropdown_menu',
+    'module' => 'custom_addhands',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(
+      'authenticated user' => 2,
+    ),
+    'themes' => array(
+      'addhands' => array(
+        'region' => 'header',
+        'status' => 1,
+        'theme' => 'addhands',
+        'weight' => 0,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['custom_addhands-user_header_menu'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'user_header_menu',
+    'module' => 'custom_addhands',
+    'node_types' => array(),
+    'pages' => 'user/*/adverts
+user/*/create_advert
+user/*/edit',
+    'roles' => array(),
+    'themes' => array(
+      'addhands' => array(
+        'region' => 'menu',
+        'status' => 1,
+        'theme' => 'addhands',
+        'weight' => 0,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 1,
+  );
+
+  $export['views--exp-advert_search-page_1'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => '-exp-advert_search-page_1',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => 'advert-search',
+    'roles' => array(),
+    'themes' => array(
+      'addhands' => array(
+        'region' => 'sidebar_second',
+        'status' => 1,
+        'theme' => 'addhands',
+        'weight' => -25,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
+  );
+
+  $export['views-advert_search-block_1'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'advert_search-block_1',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => 'advert-search',
+    'roles' => array(),
+    'themes' => array(
+      'addhands' => array(
+        'region' => 'sidebar_second',
+        'status' => 1,
+        'theme' => 'addhands',
+        'weight' => -24,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Результаты поиска',
+    'visibility' => 1,
+  );
+
+  $export['views-frontpage_slideshow-block'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'frontpage_slideshow-block',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'addhands' => array(
+        'region' => 'branding',
+        'status' => 1,
+        'theme' => 'addhands',
+        'weight' => -17,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
+  );
+
   $export['views-nearest_object-block'] = array(
     'cache' => -1,
     'custom' => 0,
@@ -172,7 +403,7 @@ node/*/edit',
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'addhands',
-        'weight' => -26,
+        'weight' => -28,
       ),
       'omega' => array(
         'region' => '',
@@ -206,7 +437,7 @@ node/*/edit',
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'addhands',
-        'weight' => 0,
+        'weight' => -27,
       ),
       'omega' => array(
         'region' => '',
@@ -240,7 +471,7 @@ node/*/edit',
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'addhands',
-        'weight' => 0,
+        'weight' => -26,
       ),
       'omega' => array(
         'region' => '',

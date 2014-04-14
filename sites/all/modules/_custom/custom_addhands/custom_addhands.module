@@ -70,17 +70,17 @@ function custom_addhands_menu(){
     'type' => MENU_CALLBACK,
   );
 
-  $items['test-search'] = array(
-    'title' => 'test search',
+  $items['search'] = array(
+    'title' => 'Поиск объявлений',
     'page callback' => 'advert_search_callback',
     'page arguments' => array(1),
     'access arguments' => array('use search'),
   );
 
-  $items['reload-search-results/%/%/%/%'] = array(
+  $items['reload-search-results/%/%/%/%/%'] = array(
     'title' => 'reload_search_results',
     'page callback' => 'reload_search_results',
-    'page arguments' => array(1,2,3,4),
+    'page arguments' => array(1,2,3,4,5),
     'access arguments' => array('use search'),
   );
 
@@ -179,6 +179,14 @@ function custom_addhands_settings($form, $form_state){
   return system_settings_form($form);
 }
 
+/*
+ * Implements hook_init().
+ */
+function custom_addhands_init(){
+  if (arg(0) == 'advert-search') {
+    drupal_add_js(drupal_get_path('module', 'custom_addhands') . '/addhands.js');
+  }
+}
 /*
  * Implements hook_block_info().
  */
@@ -410,6 +418,13 @@ function custom_addhands_form_alter(&$form, &$form_state, $form_id)
       $form['field_details']['und']['#title'] = '';
     }
   }
+
+  if ($form_id = 'views_exposed_form'){
+    unset($form['type']['#options']['All']);
+    $form['field_price_value']['min']['#size'] = 9;
+    $form['field_price_value']['max']['#size'] = 9;
+    $form['field_price_value']['max']['#title'] = ' - ';
+  }
 /*
   //edit user form
   if ($form_id == 'user_profile_form' && isset($form['account']['name']['#default_value'])){
@@ -483,48 +498,18 @@ function theme_multicolumn_options($element) {
 }
 
 function advert_search_callback($advert_type){
-
-  /*$node = node_load(31);
-  $map[] = array(
-    'type' => 'Point',
-    'coordinates' => $node->field_map['und'][0]['lon'] . ',' . $node->field_map['und'][0]['lat'],
-  );
-  $node = node_load(29);
-  $map[] = array(
-    'type' => 'Point',
-    'coordinates' => $node->field_map['und'][0]['lon'] . ',' . $node->field_map['und'][0]['lat'],
-  );
-  $map = drupal_json_encode($map);
-  dsm($map);
-
-  $form['location'] = array(
-    '#type' => 'geofield_ymap',
-    '#title' => 'Location',
-    '#description' => 'Select control and click to map for add object on map. Double click on object to remove it.',
-    '#map_multiple' => TRUE,
-    '#map_center' => array(55.733835, 37.588227),
-    '#map_zoom' => 12,
-    '#map_auto_centering' => TRUE,
-    '#map_object_types' => array('point', 'line', 'polygon'),
-    '#default_value' => '',
-    //'#map_objects' => '{"type":"Point","coordinates":[37.62,55.75]}', // GeoJSON, optionaly
-    '#map_objects' => $map,
-  );
-
-  return drupal_render($form);*/
   drupal_add_js(drupal_get_path('module', 'custom_addhands') . '/addhands.js');
   $view = views_get_view('advert_search');
   $view->set_display('page_1');
   $view->pre_execute();
   $view->execute();
   return  $view->render('page_1');
-
 }
 
 /*
  * Фильтруем объявления в поиске при изменении видимой области карты
  */
-function reload_search_results($left, $top, $right, $bottom){
+function reload_search_results($left, $top, $right, $bottom, $type = NULL){
   $view = views_get_view('advert_search');
   $display_id = 'block_1';
   // Устанавливаем значения фильтров при изменении видимой области карты
@@ -537,12 +522,18 @@ function reload_search_results($left, $top, $right, $bottom){
   $filter['value']['min'] = $top;
   $filter['value']['max'] = $bottom;
   $view->set_item($display_id, 'filter', 'field_map_lat', $filter);
+
+  if (isset($type)){
+    $view->set_arguments(array($type));
+  }
+  else {
+    $view->set_arguments(array('advert_house_sell'));
+  }
   // Подготовливаем и рендерим вью
   $view->pre_execute();
   $block_html = $view->render($display_id);
   // возвращаем хтмл в js для замены содержимого блока
   $result['block_html'] = $block_html;
-//dsm($view);
   $adverts = array();
   foreach ($view->result as $row) {
     $coords = array();
@@ -550,15 +541,11 @@ function reload_search_results($left, $top, $right, $bottom){
     $coords[] = $row->field_field_map[0]['raw']['lon'];
     $coords[] = $row->field_field_map[0]['raw']['lat'];
     $advert['coords'] = $coords;
-    $advert['baloon'] = 'test';
+    $advert['baloon']['hint'] = $row->node_title;
+    $advert['baloon']['title'] = '<ymaps class="ymaps-balloon-content__body">' . l($row->node_title, 'node/' . $row->nid) . '</ymaps>';
+    $advert['baloon']['img'] = drupal_render($row->field_field_photo[0]['rendered']);
     $adverts[] = $advert;
   }
-  /*$display_id = 'page_1';
-  $view->set_display($display_id);
-  $view->set_arguments(array('29,31'));
-  $view->pre_execute();
-  $results = views_get_view_result('advert_search', 'page_1', array('29,31'));
-  $map_html = $view->render($display_id);*/
   // возвращаем хтмл в js для замены содержимого блока
   $result['adverts'] = $adverts;
   drupal_json_output($result);
