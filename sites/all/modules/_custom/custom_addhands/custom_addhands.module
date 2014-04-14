@@ -81,7 +81,7 @@ function custom_addhands_menu(){
     'title' => 'reload_search_results',
     'page callback' => 'reload_search_results',
     'page arguments' => array(1,2,3,4,5),
-    'access arguments' => array('use search'),
+    'access arguments' => array('access content'),
   );
 
   return $items;
